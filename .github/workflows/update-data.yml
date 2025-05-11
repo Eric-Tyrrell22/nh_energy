@@ -1,0 +1,36 @@
+name: Update Supplier Data
+
+on:
+  schedule:
+    - cron: '0 0 * * *'
+  workflow_dispatch:
+
+jobs:
+  update_data_and_commit:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run update script
+        run: npx tsx scripts/updatePlans.ts
+
+      - name: Commit and push changes
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "Automated update of supplier data"
+          file_pattern: data/supplier_data
+          commit_user_name: "GitHub Actions Bot"
+          commit_user_email: "actions@github.com"
+          branch: main
