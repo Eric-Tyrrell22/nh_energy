@@ -11,4 +11,5 @@ export interface SupplierPlan {
   rate_is_good_for?: string | null;
   rate_end?: string | null;
   comments?: string | null;
+  link?: string | null;
 }

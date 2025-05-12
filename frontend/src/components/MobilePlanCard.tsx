@@ -113,9 +113,8 @@ const MobilePlanCard: React.FC<MobilePlanCardProps> = ({ plan }) => {
         </Typography>
       </CardContent>
       <CardActions sx={{ 
-        justifyContent: plan.comments ? 'space-between' : 'flex-end', 
-        pt: 0.5, 
-        pb: 1.5, 
+        justifyContent: plan.comments || plan.link ? 'space-between' : 'flex-end', 
+        alignItems: 'center',
         px: 2, 
         backgroundColor: alpha(theme.palette.grey[50], 0.3),
         borderTop: `1px solid ${theme.palette.divider}`

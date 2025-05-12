@@ -9,6 +9,7 @@
     "is_intro_price": false,
     "has_cancellation_fee": false,
     "percent_renewable": 0,
+    "link": "http://ww2.ambitenergy.com/",
     "rate_is_good_for": "24 months",
     "rate_end": "*Last meter read*",
     "comments": "As temperatures drop, your savings will rise. Get 50% off your energy charges on bill cycles beginning November 1st through the end of February. Only available to new Ambit customers"
@@ -23,6 +24,7 @@
     "is_intro_price": false,
     "has_cancellation_fee": false,
     "percent_renewable": 0,
+    "link": "http://ww2.ambitenergy.com/",
     "rate_is_good_for": "12 months",
     "rate_end": "*Last meter read*",
     "comments": "Only available to new Ambit customers"
@@ -37,6 +39,7 @@
     "is_intro_price": false,
     "has_cancellation_fee": false,
     "percent_renewable": 0,
+    "link": "http://ww2.ambitenergy.com/",
     "rate_is_good_for": "12 months",
     "rate_end": "*Last meter read*",
     "comments": "As temperatures drop, your savings will rise. Get 50% off your energy charges on bill cycles beginning November 1st through the end of February. Only available to new Ambit customers"
@@ -51,6 +54,7 @@
     "is_intro_price": false,
     "has_cancellation_fee": false,
     "percent_renewable": 0,
+    "link": "http://ww2.ambitenergy.com/",
     "rate_is_good_for": "12 months",
     "rate_end": "*Last meter read*",
     "comments": "Only available to new Ambit customers"
@@ -65,6 +69,7 @@
     "is_intro_price": false,
     "has_cancellation_fee": false,
     "percent_renewable": 25.2,
+    "link": "http://www.standardpower.com/communities/amherst",
     "rate_is_good_for": "6 months",
     "rate_end": "October, 2025 *Last meter read*",
     "comments": "Stable rate program offered by Standard Power open to customers in Amherst. Go to https://StandardPower.com/Communities/Amherst/ for more information and to sign up."
@@ -79,6 +84,7 @@
     "is_intro_price": false,
     "has_cancellation_fee": false,
     "percent_renewable": 26.2,
+    "link": "http://www.standardpower.com/communities/amherst",
     "rate_is_good_for": "6 months",
     "rate_end": "October, 2025 *Last meter read*",
     "comments": "Stable rate program offered by Standard Power open to customers in Amherst. Go to https://StandardPower.com/Communities/Amherst/ for more information and to sign up."
@@ -93,6 +99,7 @@
     "is_intro_price": false,
     "has_cancellation_fee": false,
     "percent_renewable": 50,
+    "link": "http://www.standardpower.com/communities/amherst",
     "rate_is_good_for": "6 months",
     "rate_end": "October, 2025 *Last meter read*",
     "comments": "Stable rate program offered by Standard Power open to customers in Amherst. Go to https://StandardPower.com/Communities/Amherst/ for more information and to sign up."
@@ -107,6 +114,7 @@
     "is_intro_price": false,
     "has_cancellation_fee": false,
     "percent_renewable": 100,
+    "link": "http://www.standardpower.com/communities/amherst",
     "rate_is_good_for": "6 months",
     "rate_end": "October, 2025 *Last meter read*",
     "comments": "Stable rate program offered by Standard Power open to customers in Amherst. Go to https://StandardPower.com/Communities/Amherst/ for more information and to sign up."
@@ -121,6 +129,7 @@
     "is_intro_price": false,
     "has_cancellation_fee": false,
     "percent_renewable": 26.2,
+    "link": "http://www.StandardPower.com/Communities/Bennington/",
     "rate_is_good_for": "6 months",
     "rate_end": "October, 2025 *Last meter read*",
     "comments": "Stable rate program offered by Standard Power open to customers in Bennington. Go to https://StandardPower.com/Communities/Bennington/ for more information and to sign up."
@@ -135,6 +144,7 @@
     "is_intro_price": false,
     "has_cancellation_fee": false,
     "percent_renewable": 50,
+    "link": "http://www.StandardPower.com/Communities/Bennington/",
     "rate_is_good_for": "6 months",
     "rate_end": "October, 2025 *Last meter read*",
     "comments": "Stable rate program offered by Standard Power open to customers in Bennington. Go to https://StandardPower.com/Communities/Bennington/ for more information and to sign up."
@@ -149,6 +159,7 @@
     "is_intro_price": false,
     "has_cancellation_fee": false,
     "percent_renewable": 100,
+    "link": "http://www.StandardPower.com/Communities/Bennington/",
     "rate_is_good_for": "6 months",
     "rate_end": "October, 2025 *Last meter read*",
     "comments": "Stable rate program offered by Standard Power open to customers in Bennington. Go to https://StandardPower.com/Communities/Bennington/ for more information and to sign up."
@@ -163,6 +174,7 @@
     "is_intro_price": false,
     "has_cancellation_fee": false,
     "percent_renewable": 25.2,
+    "link": "http://www.StandardPower.com/Communities/Bennington/",
     "rate_is_good_for": "6 months",
     "rate_end": "October, 2025 *Last meter read*",
     "comments": "Stable rate program offered by Standard Power open to customers in Bennington. Go to https://StandardPower.com/Communities/Bennington/ for more information and to sign up."
@@ -177,6 +189,7 @@
     "is_intro_price": false,
     "has_cancellation_fee": true,
     "percent_renewable": 100,
+    "link": "http://cleanskyenergy.com/",
     "rate_is_good_for": "6 months",
     "rate_end": "*Last meter read*",
     "comments": "Have a question about a plan or need help placing an order?\nCall us: 1-888-355-6205 | Email us: CustomerCare@CleanSkyEnergy.com"
@@ -191,6 +204,7 @@
     "is_intro_price": false,
     "has_cancellation_fee": true,
     "percent_renewable": 100,
+    "link": "http://cleanskyenergy.com/",
     "rate_is_good_for": "24 months",
     "rate_end": "*Last meter read*",
     "comments": "Have a question about a plan or need help placing an order?\nCall us: 1-888-355-6205 | Email us: CustomerCare@CleanSkyEnergy.com"
@@ -205,6 +219,7 @@
     "is_intro_price": false,
     "has_cancellation_fee": true,
     "percent_renewable": 100,
+    "link": "http://cleanskyenergy.com/",
     "rate_is_good_for": "12 months",
     "rate_end": "*Last meter read*",
     "comments": "Have a question about a plan or need help placing an order?\nCall us: 1-888-355-6205 | Email us: CustomerCare@CleanSkyEnergy.com"
@@ -219,6 +234,7 @@
     "is_intro_price": false,
     "has_cancellation_fee": true,
     "percent_renewable": 100,
+    "link": "http://cleanskyenergy.com/",
     "rate_is_good_for": "24 months",
     "rate_end": "*Last meter read*",
     "comments": "Have a question about a plan or need help placing an order?\nCall us: 1-888-355-6205 | Email us: CustomerCare@CleanSkyEnergy.com"
@@ -233,6 +249,7 @@
     "is_intro_price": false,
     "has_cancellation_fee": true,
     "percent_renewable": 100,
+    "link": "http://cleanskyenergy.com/",
     "rate_is_good_for": "12 months",
     "rate_end": "*Last meter read*",
     "comments": "Have a question about a plan or need help placing an order?\nCall us: 1-888-355-6205 | Email us: CustomerCare@CleanSkyEnergy.com"
@@ -247,6 +264,7 @@
     "is_intro_price": false,
     "has_cancellation_fee": false,
     "percent_renewable": 25.2,
+    "link": "http://www.CommunityPowerNH.gov",
     "rate_is_good_for": "5 months",
     "rate_end": "July, 2025 *Last meter read*",
     "comments": "visit www.communitypowernh.gov to see if city or town has implemented Community Power with the Coalition"
@@ -261,6 +279,7 @@
     "is_intro_price": false,
     "has_cancellation_fee": false,
     "percent_renewable": 100,
+    "link": "http://www.CommunityPowerNH.gov",
     "rate_is_good_for": "5 months",
     "rate_end": "July, 2025 *Last meter read*",
     "comments": "visit www.communitypowernh.gov to see if city or town has implemented Community Power with the Coalition"
@@ -275,6 +294,7 @@
     "is_intro_price": false,
     "has_cancellation_fee": false,
     "percent_renewable": 25.2,
+    "link": "http://www.CommunityPowerNH.gov",
     "rate_is_good_for": "5 months",
     "rate_end": "July, 2025 *Last meter read*",
     "comments": "This rate is available to Peterborough Community Power Customers. www.communitypowernh.gov/peterborough"
@@ -289,6 +309,7 @@
     "is_intro_price": false,
     "has_cancellation_fee": false,
     "percent_renewable": 33,
+    "link": "http://www.CommunityPowerNH.gov",
     "rate_is_good_for": "5 months",
     "rate_end": "July, 2025 *Last meter read*",
     "comments": "visit www.communitypowernh.gov to see if city or town has implemented Community Power with the Coalition"
@@ -303,6 +324,7 @@
     "is_intro_price": false,
     "has_cancellation_fee": false,
     "percent_renewable": 50,
+    "link": "http://www.CommunityPowerNH.gov",
     "rate_is_good_for": "5 months",
     "rate_end": "July, 2025 *Last meter read*",
     "comments": "visit www.communitypowernh.gov to see if city or town has implemented Community Power with the Coalition"
@@ -317,6 +339,7 @@
     "is_intro_price": false,
     "has_cancellation_fee": false,
     "percent_renewable": 0,
+    "link": "http://shop.directenergy.com/usn/product-chart/?msid=6338",
     "rate_is_good_for": "6 months",
     "rate_end": "*Last meter read*",
     "comments": "Rate plan is available for new customers only."
@@ -331,6 +354,7 @@
     "is_intro_price": false,
     "has_cancellation_fee": false,
     "percent_renewable": 100,
+    "link": "http://shop.directenergy.com/usn/product-chart/?msid=6338",
     "rate_is_good_for": "24 months",
     "rate_end": "*Last meter read*",
     "comments": "Green Energy. Rate plan is available for new customers only."
@@ -345,6 +369,7 @@
     "is_intro_price": false,
     "has_cancellation_fee": false,
     "percent_renewable": 0,
+    "link": "http://shop.directenergy.com/usn/product-chart/?msid=6338",
     "rate_is_good_for": "6 months",
     "rate_end": "*Last meter read*",
     "comments": "Rate plan is available for new customers only."
@@ -359,6 +384,7 @@
     "is_intro_price": false,
     "has_cancellation_fee": false,
     "percent_renewable": 0,
+    "link": "http://shop.directenergy.com/usn/product-chart/?msid=6338",
     "rate_is_good_for": "24 months",
     "rate_end": "*Last meter read*",
     "comments": "Rate plan is available for new customers only."
@@ -373,6 +399,7 @@
     "is_intro_price": false,
     "has_cancellation_fee": false,
     "percent_renewable": 0,
+    "link": "http://shop.directenergy.com/usn/product-chart/?msid=6338",
     "rate_is_good_for": "12 months",
     "rate_end": "*Last meter read*",
     "comments": "Rate plan is available for new customers only."
@@ -387,6 +414,7 @@
     "is_intro_price": false,
     "has_cancellation_fee": false,
     "percent_renewable": 0,
+    "link": "http://shop.directenergy.com/usn/product-chart/?msid=6338",
     "rate_is_good_for": "6 months",
     "rate_end": "*Last meter read*",
     "comments": "Rate plan is available for new customers only."
@@ -401,6 +429,7 @@
     "is_intro_price": false,
     "has_cancellation_fee": false,
     "percent_renewable": 0,
+    "link": "http://shop.directenergy.com/usn/product-chart/?msid=6338",
     "rate_is_good_for": "12 months",
     "rate_end": "*Last meter read*",
     "comments": "Rate plan is available for new customers only."
@@ -415,6 +444,7 @@
     "is_intro_price": false,
     "has_cancellation_fee": false,
     "percent_renewable": 0,
+    "link": "http://providerpower.com/nh/",
     "rate_is_good_for": "3 months",
     "rate_end": "*Last meter read*",
     "comments": "An easy choice for new customers to lock in a fixed rate for 3 months with no monthly service fee or early termination fees."
@@ -429,6 +459,7 @@
     "is_intro_price": false,
     "has_cancellation_fee": true,
     "percent_renewable": 0,
+    "link": "http://providerpower.com/nh/",
     "rate_is_good_for": "12 months",
     "rate_end": "*Last meter read*",
     "comments": "Are you looking for a fixed rate energy plan? This plan is for you. Enjoy 12 months of a fixed rate with no monthly service fee and a $100 early termination fee."
@@ -443,6 +474,7 @@
     "is_intro_price": false,
     "has_cancellation_fee": false,
     "percent_renewable": 57.3,
+    "link": "http://www.colonialpowergroupnh.com/hampton/",
     "rate_is_good_for": "7 months",
     "rate_end": "November, 2025 *Last meter read*",
     "comments": "Available only to residential customers located in Hampton, NH\nRenewable Energy Content = NH RPS of 24.3% + NH Class I RECs of 33% = 57.3%"
@@ -457,6 +489,7 @@
     "is_intro_price": false,
     "has_cancellation_fee": false,
     "percent_renewable": 100,
+    "link": "http://www.colonialpowergroupnh.com/hampton/",
     "rate_is_good_for": "7 months",
     "rate_end": "November, 2025 *Last meter read*",
     "comments": "Available only to residential customers located in Hampton, NH\nRenewable Energy Content = 100% NH Class I RECs (including 14.1% in NH RPS)"
@@ -471,6 +504,7 @@
     "is_intro_price": false,
     "has_cancellation_fee": false,
     "percent_renewable": 24.3,
+    "link": "http://www.colonialpowergroupnh.com/hampton/",
     "rate_is_good_for": "7 months",
     "rate_end": "November, 2025 *Last meter read*",
     "comments": "Available only to residential customers located in Hampton, NH\nRenewable Energy Content = NH RPS of 24.3%"
@@ -485,6 +519,7 @@
     "is_intro_price": false,
     "has_cancellation_fee": false,
     "percent_renewable": 26.2,
+    "link": "http://www.StandardPower.com/Communities/Hillsborough/",
     "rate_is_good_for": "7 months",
     "rate_end": "November, 2025 *Last meter read*",
     "comments": "Stable rate program offered by Standard Power open to customers in Hillsborough. Go to https://StandardPower.com/Communities/Hillsborough/ for more information and to sign up."
@@ -499,6 +534,7 @@
     "is_intro_price": false,
     "has_cancellation_fee": false,
     "percent_renewable": 100,
+    "link": "http://www.StandardPower.com/Communities/Hillsborough/",
     "rate_is_good_for": "7 months",
     "rate_end": "November, 2025 *Last meter read*",
     "comments": "Stable rate program offered by Standard Power open to customers in Hillsborough. Go to https://StandardPower.com/Communities/Hillsborough/ for more information and to sign up."
@@ -513,6 +549,7 @@
     "is_intro_price": false,
     "has_cancellation_fee": false,
     "percent_renewable": 50,
+    "link": "http://www.StandardPower.com/Communities/Hillsborough/",
     "rate_is_good_for": "7 months",
     "rate_end": "November, 2025 *Last meter read*",
     "comments": "Stable rate program offered by Standard Power open to customers in Hillsborough. Go to https://StandardPower.com/Communities/Hillsborough/ for more information and to sign up."
@@ -527,6 +564,7 @@
     "is_intro_price": false,
     "has_cancellation_fee": false,
     "percent_renewable": 25.2,
+    "link": "http://www.StandardPower.com/Communities/Hillsborough/",
     "rate_is_good_for": "7 months",
     "rate_end": "November, 2025 *Last meter read*",
     "comments": "Stable rate program offered by Standard Power open to customers in Hillsborough. Go to https://StandardPower.com/Communities/Hillsborough/ for more information and to sign up."
@@ -541,6 +579,7 @@
     "is_intro_price": false,
     "has_cancellation_fee": false,
     "percent_renewable": 24.3,
+    "link": "http://www.standardpower.com/communities/jaffrey/",
     "rate_is_good_for": "20 months",
     "rate_end": "November, 2025 *Last meter read*",
     "comments": "Stable rate program offered by Standard Power open to customers in Jaffrey. Go to https://JaffreyCommunityPower.com for more information and to sign up."
@@ -555,6 +594,7 @@
     "is_intro_price": false,
     "has_cancellation_fee": false,
     "percent_renewable": 50,
+    "link": "http://www.standardpower.com/communities/jaffrey/",
     "rate_is_good_for": "20 months",
     "rate_end": "November, 2025 *Last meter read*",
     "comments": "Stable rate program offered by Standard Power open to customers in Jaffrey. Go to https://JaffreyCommunityPower.com for more information and to sign up."
@@ -569,6 +609,7 @@
     "is_intro_price": false,
     "has_cancellation_fee": false,
     "percent_renewable": 34.3,
+    "link": "http://www.standardpower.com/communities/jaffrey/",
     "rate_is_good_for": "20 months",
     "rate_end": "November, 2025 *Last meter read*",
     "comments": "Stable rate program offered by Standard Power open to customers in Jaffrey. Go to https://JaffreyCommunityPower.com for more information and to sign up."
@@ -583,6 +624,7 @@
     "is_intro_price": false,
     "has_cancellation_fee": false,
     "percent_renewable": 100,
+    "link": "http://www.standardpower.com/communities/jaffrey/",
     "rate_is_good_for": "20 months",
     "rate_end": "November, 2025 *Last meter read*",
     "comments": "Stable rate program offered by Standard Power open to customers in Jaffrey. Go to https://JaffreyCommunityPower.com for more information and to sign up."
@@ -597,6 +639,7 @@
     "is_intro_price": false,
     "has_cancellation_fee": false,
     "percent_renewable": 100,
+    "link": "http://keenecommunitypower.com",
     "rate_is_good_for": "30 months",
     "rate_end": "December, 2025 *Last meter read*",
     "comments": "Adds voluntary renewable energy (NH Class I RECs) to total 100%."
@@ -611,6 +654,7 @@
     "is_intro_price": false,
     "has_cancellation_fee": false,
     "percent_renewable": 23.4,
+    "link": "http://keenecommunitypower.com",
     "rate_is_good_for": "30 months",
     "rate_end": "December, 2025 *Last meter read*",
     "comments": "Meets state minimum renewable energy requirements."
@@ -625,6 +669,7 @@
     "is_intro_price": false,
     "has_cancellation_fee": false,
     "percent_renewable": 50,
+    "link": "http://keenecommunitypower.com",
     "rate_is_good_for": "30 months",
     "rate_end": "December, 2025 *Last meter read*",
     "comments": "Adds voluntary renewable energy (NH Class I RECs) to total 50%."
@@ -639,6 +684,7 @@
     "is_intro_price": false,
     "has_cancellation_fee": false,
     "percent_renewable": 33.4,
+    "link": "http://keenecommunitypower.com",
     "rate_is_good_for": "30 months",
     "rate_end": "December, 2025 *Last meter read*",
     "comments": "Default option offered by the City of Keene. Includes 10% more renewable energy from Class I sources than required by state law."
@@ -653,6 +699,7 @@
     "is_intro_price": false,
     "has_cancellation_fee": false,
     "percent_renewable": 23.4,
+    "link": "http://marlboroughcommunitypower.com",
     "rate_is_good_for": "30 months",
     "rate_end": "December, 2025 *Last meter read*",
     "comments": "Meets state minimum renewable energy requirements."
@@ -667,6 +714,7 @@
     "is_intro_price": false,
     "has_cancellation_fee": false,
     "percent_renewable": 50,
+    "link": "http://marlboroughcommunitypower.com",
     "rate_is_good_for": "30 months",
     "rate_end": "December, 2025 *Last meter read*",
     "comments": "Includes voluntary renewable energy above state required minimum to total 50%."
@@ -681,6 +729,7 @@
     "is_intro_price": false,
     "has_cancellation_fee": false,
     "percent_renewable": 100,
+    "link": "http://marlboroughcommunitypower.com",
     "rate_is_good_for": "30 months",
     "rate_end": "December, 2025 *Last meter read*",
     "comments": "Includes voluntary renewable energy above state required minimum to total 100%."
@@ -695,6 +744,7 @@
     "is_intro_price": false,
     "has_cancellation_fee": false,
     "percent_renewable": 33.4,
+    "link": "http://marlboroughcommunitypower.com",
     "rate_is_good_for": "30 months",
     "rate_end": "December, 2025 *Last meter read*",
     "comments": "Default program plan offered by Town of Marlborough. Includes 10% more renewable energy from Class I sources than required by state law."
@@ -709,6 +759,7 @@
     "is_intro_price": false,
     "has_cancellation_fee": false,
     "percent_renewable": 34.3,
+    "link": "http://www.standardpower.com/communities/milford/",
     "rate_is_good_for": "20 months",
     "rate_end": "November, 2025 *Last meter read*",
     "comments": "Stable rate program offered by Standard Power open to customers in Milford. Go to https://MilfordCommunityPower.com for more information and to sign up."
@@ -723,6 +774,7 @@
     "is_intro_price": false,
     "has_cancellation_fee": false,
     "percent_renewable": 100,
+    "link": "http://www.standardpower.com/communities/milford/",
     "rate_is_good_for": "20 months",
     "rate_end": "November, 2025 *Last meter read*",
     "comments": "Stable rate program offered by Standard Power open to customers in Milford. Go to https://MilfordCommunityPower.com for more information and to sign up."
@@ -737,6 +789,7 @@
     "is_intro_price": false,
     "has_cancellation_fee": false,
     "percent_renewable": 50,
+    "link": "http://www.standardpower.com/communities/milford/",
     "rate_is_good_for": "20 months",
     "rate_end": "November, 2025 *Last meter read*",
     "comments": "Stable rate program offered by Standard Power open to customers in Milford. Go to https://MilfordCommunityPower.com for more information and to sign up."
@@ -751,6 +804,7 @@
     "is_intro_price": false,
     "has_cancellation_fee": false,
     "percent_renewable": 24.3,
+    "link": "http://www.standardpower.com/communities/milford/",
     "rate_is_good_for": "20 months",
     "rate_end": "November, 2025 *Last meter read*",
     "comments": "Stable rate program offered by Standard Power open to customers in Milford. Go to https://MilfordCommunityPower.com for more information and to sign up."
@@ -765,6 +819,7 @@
     "is_intro_price": false,
     "has_cancellation_fee": false,
     "percent_renewable": 34.3,
+    "link": "http://www.standardpower.com/communities/new-boston/",
     "rate_is_good_for": "20 months",
     "rate_end": "November, 2025 *Last meter read*",
     "comments": "Stable rate program offered by Standard Power open to customers in New Boston. Go to https://NewBostonCommunityPower.com for more information and to sign up."
@@ -779,6 +834,7 @@
     "is_intro_price": false,
     "has_cancellation_fee": false,
     "percent_renewable": 50,
+    "link": "http://www.standardpower.com/communities/new-boston/",
     "rate_is_good_for": "20 months",
     "rate_end": "November, 2025 *Last meter read*",
     "comments": "Stable rate program offered by Standard Power open to customers in New Boston. Go to https://NewBostonCommunityPower.com for more information and to sign up."
@@ -793,6 +849,7 @@
     "is_intro_price": false,
     "has_cancellation_fee": false,
     "percent_renewable": 24.3,
+    "link": "http://www.standardpower.com/communities/new-boston/",
     "rate_is_good_for": "20 months",
     "rate_end": "November, 2025 *Last meter read*",
     "comments": "Stable rate program offered by Standard Power open to customers in New Boston. Go to https://NewBostonCommunityPower.com for more information and to sign up."
@@ -807,6 +864,7 @@
     "is_intro_price": false,
     "has_cancellation_fee": false,
     "percent_renewable": 100,
+    "link": "http://www.standardpower.com/communities/new-boston/",
     "rate_is_good_for": "20 months",
     "rate_end": "November, 2025 *Last meter read*",
     "comments": "Stable rate program offered by Standard Power open to customers in New Boston. Go to https://NewBostonCommunityPower.com for more information and to sign up."
@@ -821,6 +879,7 @@
     "is_intro_price": false,
     "has_cancellation_fee": true,
     "percent_renewable": 100,
+    "link": "http://www.napower.com",
     "rate_is_good_for": "14 months",
     "rate_end": "*Last meter read*",
     "comments": "Early termination fee: $10.00 for each month remaining in your contract."
@@ -835,6 +894,7 @@
     "is_intro_price": false,
     "has_cancellation_fee": true,
     "percent_renewable": 0,
+    "link": "http://www.napower.com",
     "rate_is_good_for": "14 months",
     "rate_end": "*Last meter read*",
     "comments": "Early termination fee: $10.00 for each month remaining in your contract."
@@ -849,6 +909,7 @@
     "is_intro_price": false,
     "has_cancellation_fee": true,
     "percent_renewable": 0,
+    "link": "http://www.napower.com",
     "rate_is_good_for": "6 months",
     "rate_end": "*Last meter read*",
     "comments": "Early termination fee: $10.00 for each month remaining in your contract."
@@ -863,6 +924,7 @@
     "is_intro_price": false,
     "has_cancellation_fee": false,
     "percent_renewable": 25.2,
+    "link": "http://www.StandardPower.com/Communities/Rollinsford/",
     "rate_is_good_for": "7 months",
     "rate_end": "November, 2025 *Last meter read*",
     "comments": "Stable rate program offered by Standard Power open to customers in Rollinsford. Go to https://StandardPower.com/Communities/Rollinsford/ for more information and to sign up."
@@ -877,6 +939,7 @@
     "is_intro_price": false,
     "has_cancellation_fee": false,
     "percent_renewable": 50,
+    "link": "http://www.StandardPower.com/Communities/Rollinsford/",
     "rate_is_good_for": "7 months",
     "rate_end": "November, 2025 *Last meter read*",
     "comments": "Stable rate program offered by Standard Power open to customers in Rollinsford. Go to https://StandardPower.com/Communities/Rollinsford/ for more information and to sign up."
@@ -891,6 +954,7 @@
     "is_intro_price": false,
     "has_cancellation_fee": false,
     "percent_renewable": 100,
+    "link": "http://www.StandardPower.com/Communities/Rollinsford/",
     "rate_is_good_for": "7 months",
     "rate_end": "November, 2025 *Last meter read*",
     "comments": "Stable rate program offered by Standard Power open to customers in Rollinsford. Go to https://StandardPower.com/Communities/Rollinsford/ for more information and to sign up."
@@ -905,6 +969,7 @@
     "is_intro_price": false,
     "has_cancellation_fee": false,
     "percent_renewable": 26.2,
+    "link": "http://www.StandardPower.com/Communities/Rollinsford/",
     "rate_is_good_for": "7 months",
     "rate_end": "November, 2025 *Last meter read*",
     "comments": "Stable rate program offered by Standard Power open to customers in Rollinsford. Go to https://StandardPower.com/Communities/Rollinsford/ for more information and to sign up."
@@ -919,6 +984,7 @@
     "is_intro_price": false,
     "has_cancellation_fee": false,
     "percent_renewable": 100,
+    "link": "http://account.smartenergy.com/new-hampshire?utm_source=PUC_Site_NH&utm_medium=referral&utm_campaign=exclusive_online_rate",
     "rate_is_good_for": "6 months",
     "rate_end": "*Last meter read*",
     "comments": "Enjoy our fixed rate for 6 months!"
@@ -933,6 +999,7 @@
     "is_intro_price": false,
     "has_cancellation_fee": false,
     "percent_renewable": 100,
+    "link": "http://swanzeycommunitypower.com",
     "rate_is_good_for": "30 months",
     "rate_end": "December, 2025 *Last meter read*",
     "comments": "Adds voluntary renewable energy (NH Class I RECs) to total 100%."
@@ -947,6 +1014,7 @@
     "is_intro_price": false,
     "has_cancellation_fee": false,
     "percent_renewable": 23.4,
+    "link": "http://swanzeycommunitypower.com",
     "rate_is_good_for": "30 months",
     "rate_end": "December, 2025 *Last meter read*",
     "comments": "Meets state minimum renewable energy requirements."
@@ -961,6 +1029,7 @@
     "is_intro_price": false,
     "has_cancellation_fee": false,
     "percent_renewable": 33.4,
+    "link": "http://swanzeycommunitypower.com",
     "rate_is_good_for": "30 months",
     "rate_end": "December, 2025 *Last meter read*",
     "comments": "Default option offered by the Town of Swanzey. Includes 10% more renewable energy from Class I sources than required by state law."
@@ -975,6 +1044,7 @@
     "is_intro_price": false,
     "has_cancellation_fee": false,
     "percent_renewable": 50,
+    "link": "http://swanzeycommunitypower.com",
     "rate_is_good_for": "30 months",
     "rate_end": "December, 2025 *Last meter read*",
     "comments": "Adds voluntary renewable energy (NH Class I RECs) to total 50%."
@@ -989,6 +1059,7 @@
     "is_intro_price": false,
     "has_cancellation_fee": false,
     "percent_renewable": 100,
+    "link": "http://www.thinkenergy.com/?utm_source=rateboard&utm_medium=referral&utm_campaign=newhampshire",
     "rate_is_good_for": "12 months",
     "rate_end": "*Last meter read*",
     "comments": "Think Clean 12 Sign up and receive a $100 gift card. New customers only. Eligibility rules apply. See www.thinkenergy.com/gift-card-promotion for more information."
@@ -1003,6 +1074,7 @@
     "is_intro_price": false,
     "has_cancellation_fee": false,
     "percent_renewable": 100,
+    "link": "http://www.thinkenergy.com/?utm_source=rateboard&utm_medium=referral&utm_campaign=newhampshire",
     "rate_is_good_for": "36 months",
     "rate_end": "*Last meter read*",
     "comments": "Think Clean 36 Sign up and receive a $100 gift card. New customers only. Eligibility rules apply. See www.thinkenergy.com/gift-card-promotion for more information."
@@ -1017,6 +1089,7 @@
     "is_intro_price": false,
     "has_cancellation_fee": false,
     "percent_renewable": 0,
+    "link": "http://www.thinkenergy.com/?utm_source=rateboard&utm_medium=referral&utm_campaign=newhampshire",
     "rate_is_good_for": "5 months",
     "rate_end": "*Last meter read*",
     "comments": "Environmental Donation Available. Contact Think for details."
@@ -1031,6 +1104,7 @@
     "is_intro_price": false,
     "has_cancellation_fee": false,
     "percent_renewable": 100,
+    "link": "http://www.townsquareenergy.com",
     "rate_is_good_for": "1 months",
     "rate_end": "*Last meter read*",
     "comments": "You will be given the opportunity to earn a rebate equal to 10% of what you paid toward the electricity supply charges during your first ten full billing cycles."
@@ -1045,6 +1119,7 @@
     "is_intro_price": false,
     "has_cancellation_fee": true,
     "percent_renewable": 100,
+    "link": "http://www.townsquareenergy.com",
     "rate_is_good_for": "8 months",
     "rate_end": "*Last meter read*",
     "comments": "8 monthly bill cycles fixed at 15.82 cents/kWh. See full terms in terms of service."
@@ -1059,6 +1134,7 @@
     "is_intro_price": false,
     "has_cancellation_fee": true,
     "percent_renewable": 0,
+    "link": "http://www.townsquareenergy.com",
     "rate_is_good_for": "8 months",
     "rate_end": "*Last meter read*",
     "comments": "8 monthly bill cycles fixed at 13.08 cents/kWh. See full terms in terms of service."
@@ -1073,6 +1149,7 @@
     "is_intro_price": false,
     "has_cancellation_fee": false,
     "percent_renewable": 0,
+    "link": "http://www.townsquareenergy.com",
     "rate_is_good_for": "6 months",
     "rate_end": "*Last meter read*",
     "comments": "6 monthly bill cycles fixed at 9.97 cents/kWh. See full terms in terms of service."
@@ -1087,6 +1164,7 @@
     "is_intro_price": false,
     "has_cancellation_fee": false,
     "percent_renewable": 0,
+    "link": "http://www.townsquareenergy.com",
     "rate_is_good_for": "18 months",
     "rate_end": "*Last meter read*",
     "comments": "18 monthly bill cycles fixed at 13.47 cents/kWh. See full terms in terms of service."
@@ -1101,6 +1179,7 @@
     "is_intro_price": false,
     "has_cancellation_fee": false,
     "percent_renewable": 0,
+    "link": "http://www.townsquareenergy.com",
     "rate_is_good_for": "1 months",
     "rate_end": "*Last meter read*",
     "comments": "You will be given the opportunity to earn a rebate equal to 10% of what you paid toward the electricity supply charges during your first ten full billing cycles."
@@ -1115,6 +1194,7 @@
     "is_intro_price": false,
     "has_cancellation_fee": false,
     "percent_renewable": 50,
+    "link": "http://wiltoncommunitypower.com",
     "rate_is_good_for": "30 months",
     "rate_end": "December, 2025 *Last meter read*",
     "comments": "Includes voluntary renewable energy (NH Class I RECs) to total 50% renewable energy."
@@ -1129,6 +1209,7 @@
     "is_intro_price": false,
     "has_cancellation_fee": false,
     "percent_renewable": 33.4,
+    "link": "http://wiltoncommunitypower.com",
     "rate_is_good_for": "30 months",
     "rate_end": "December, 2025 *Last meter read*",
     "comments": "Default program option offered by Town of Wilton. Includes 10% more renewable energy from Class I sources than required by state law."
@@ -1143,6 +1224,7 @@
     "is_intro_price": false,
     "has_cancellation_fee": false,
     "percent_renewable": 100,
+    "link": "http://wiltoncommunitypower.com",
     "rate_is_good_for": "30 months",
     "rate_end": "December, 2025 *Last meter read*",
     "comments": "Includes voluntary renewable energy (NH Class I RECs) to total 100%."
@@ -1157,6 +1239,7 @@
     "is_intro_price": false,
     "has_cancellation_fee": false,
     "percent_renewable": 23.4,
+    "link": "http://wiltoncommunitypower.com",
     "rate_is_good_for": "30 months",
     "rate_end": "December, 2025 *Last meter read*",
     "comments": "Meets state minimum renewable energy requirements."
@@ -1171,6 +1254,7 @@
     "is_intro_price": false,
     "has_cancellation_fee": false,
     "percent_renewable": 50,
+    "link": "http://www.xoomenergy.com",
     "rate_is_good_for": "1 months",
     "rate_end": "June, 2025 *Last meter read*",
     "comments": ""
@@ -1185,6 +1269,7 @@
     "is_intro_price": false,
     "has_cancellation_fee": true,
     "percent_renewable": 0,
+    "link": "http://www.xoomenergy.com",
     "rate_is_good_for": "12 months",
     "rate_end": "June, 2025 *Last meter read*",
     "comments": ""
@@ -1199,6 +1284,7 @@
     "is_intro_price": false,
     "has_cancellation_fee": true,
     "percent_renewable": 50,
+    "link": "http://www.xoomenergy.com",
     "rate_is_good_for": "12 months",
     "rate_end": "June, 2025 *Last meter read*",
     "comments": ""
@@ -1213,6 +1299,7 @@
     "is_intro_price": false,
     "has_cancellation_fee": true,
     "percent_renewable": 0,
+    "link": "http://www.xoomenergy.com",
     "rate_is_good_for": "12 months",
     "rate_end": "June, 2025 *Last meter read*",
     "comments": "When you enroll on RescueLock 12, 5% of your monthly energy charges will be donated to PetSmart Charities!"
@@ -1227,6 +1314,7 @@
     "is_intro_price": false,
     "has_cancellation_fee": true,
     "percent_renewable": 0,
+    "link": "http://www.xoomenergy.com",
     "rate_is_good_for": "24 months",
     "rate_end": "June, 2025 *Last meter read*",
     "comments": ""

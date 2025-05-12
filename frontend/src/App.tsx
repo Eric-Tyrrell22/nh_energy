@@ -355,7 +355,7 @@ function App() {
 
   return (
     // ... JSX structure remains the same
-    <Container maxWidth="xl" sx={{ py: 3 }}>
+    <Container maxWidth="100%" sx={{ py: 1 }}>
       <Typography variant={isMobile ? "h4" : "h3"} component="h1" gutterBottom align="center" sx={{ mb: 3, color: 'primary.dark', fontWeight: 'medium' }}>
         Energy Plan Explorer
       </Typography>

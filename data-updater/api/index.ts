@@ -34,7 +34,6 @@ function extractSupplierDataFromHtml(html: string): SupplierPlan[] {
     // KWh - using specific ID pattern (attribute starts with selector)
     const kwhElement = $table.find('span[id^="MainContent_CompareSupplierID_lblKWh_"]');
     plan.price_per_kwh = parseFloat(extractValueAfterPrefix(getElementText(kwhElement), "Per KWh: $") || '0');
-    debugger;
 
     // Last Update - using specific ID pattern
     const lastUpdateElement = $table.find('span[id^="MainContent_CompareSupplierID_lblLastUpdate_"]');
@@ -62,7 +61,13 @@ function extractSupplierDataFromHtml(html: string): SupplierPlan[] {
     if (clean_renewable_str) {
       plan.percent_renewable = parseFloat(clean_renewable_str) || 0;
     }
-    debugger;
+
+    const signUpLinkElement = $table.find('a[aria-label="Sign Up for Supplier Plan"]');
+    if (signUpLinkElement.length > 0) {
+      plan.link = signUpLinkElement.attr('href');
+    } else {
+      plan.link = null;
+    }
 
     const rateGoodForElement = $table.find('.RateGoodFor');
     plan.rate_is_good_for = extractValueAfterPrefix(getElementText(rateGoodForElement), "Rate Good for:");

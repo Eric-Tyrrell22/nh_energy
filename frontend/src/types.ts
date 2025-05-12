@@ -12,6 +12,7 @@ export interface RawEnergyPlan {
   rate_is_good_for?: string | null;
   rate_end?: string | null;
   comments?: string | null;
+  link?: string | null;
 }
 
 // This is the type we'll use within the application after processing
@@ -29,4 +30,5 @@ export interface EnergyPlan {
   rate_is_good_for_months: number; // Parsed numeric value for sorting/filtering
   rate_end: string;               // Default to empty string
   comments: string;               // Default to empty string
+  link: string;
 }
