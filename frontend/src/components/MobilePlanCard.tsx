@@ -1,19 +1,19 @@
 // frontend/src/components/MobilePlanCard.tsx
-import React from 'react';
+import React, { useState } from 'react'; // Import useState
 import type { EnergyPlan } from '../types';
 import { Card, CardContent, CardActions, Typography, Button, Chip, Box, IconButton, Tooltip, Grid } from '@mui/material';
 import { useTheme, alpha } from '@mui/material/styles';
 
-// Icons for visual cues
+// Icons
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 import OfflineBoltIcon from '@mui/icons-material/OfflineBolt';
 import EventRepeatIcon from '@mui/icons-material/EventRepeat';
-import GavelIcon from '@mui/icons-material/Gavel'; // Represents "type" or rules
+import GavelIcon from '@mui/icons-material/Gavel';
 import LinkIcon from '@mui/icons-material/Link';
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 import HighlightOffIcon from '@mui/icons-material/HighlightOff';
-import RequestQuoteOutlinedIcon from '@mui/icons-material/RequestQuoteOutlined'; // For monthly charge
+import RequestQuoteOutlinedIcon from '@mui/icons-material/RequestQuoteOutlined';
 
 interface MobilePlanCardProps {
   plan: EnergyPlan;
@@ -26,6 +26,16 @@ const formatDateForCard = (date: Date | null): string => {
 
 const MobilePlanCard: React.FC<MobilePlanCardProps> = ({ plan }) => {
   const theme = useTheme();
+  const [commentsTooltipOpen, setCommentsTooltipOpen] = useState(false); // State for the tooltip
+
+  const handleCommentsTooltipToggle = (event: React.MouseEvent<HTMLElement>) => {
+    event.stopPropagation(); // Prevent event from bubbling to the card if it had a click listener
+    setCommentsTooltipOpen((prev) => !prev);
+  };
+
+  const handleCommentsTooltipClose = () => {
+    setCommentsTooltipOpen(false);
+  };
 
   return (
     <Card sx={{ mb: 2, boxShadow: 3, '&:hover': { boxShadow: 7, transform: 'translateY(-2px)' }, transition: 'all 0.2s ease-in-out' }}>
@@ -116,15 +126,33 @@ const MobilePlanCard: React.FC<MobilePlanCardProps> = ({ plan }) => {
         justifyContent: plan.comments || plan.link ? 'space-between' : 'flex-end', 
         alignItems: 'center',
         px: 2, 
+        py: 1, // Added some vertical padding for better spacing
         backgroundColor: alpha(theme.palette.grey[50], 0.3),
         borderTop: `1px solid ${theme.palette.divider}`
       }}>
-        {plan.comments && (
-          <Tooltip title={<div style={{ whiteSpace: 'pre-line', fontSize: '0.8rem', padding: '4px' }}>{plan.comments}</div>} arrow>
-            <IconButton size="small" aria-label="plan comments">
+        {plan.comments ? ( // Ensure plan.comments is not just empty string but actually has content
+          <Tooltip
+            title={<div style={{ whiteSpace: 'pre-line', fontSize: '0.8rem', padding: '4px' }}>{plan.comments}</div>}
+            arrow
+            open={commentsTooltipOpen}
+            onClose={handleCommentsTooltipClose}
+						leaveTouchDelay={15000}
+            // Optional: if you want to disable hover/focus/touch listeners if click is primary
+            // disableHoverListener 
+            // disableFocusListener
+            // disableTouchListener // Keep this false or remove to allow tap-away to close
+          >
+            <IconButton
+              size="small"
+              aria-label="plan comments"
+              onClick={handleCommentsTooltipToggle} // Toggle on click
+            >
               <InfoOutlinedIcon fontSize="small"/>
             </IconButton>
           </Tooltip>
+        ) : (
+          // Optional: Render a placeholder or nothing if no comments
+          <Box sx={{ width: '40px' }} /> // Placeholder to keep alignment if link is present
         )}
         
         {plan.link && (
@@ -135,7 +163,7 @@ const MobilePlanCard: React.FC<MobilePlanCardProps> = ({ plan }) => {
             target="_blank"
             rel="noopener noreferrer"
             startIcon={<LinkIcon />}
-            sx={{ py: 0.5, px: 1.5, fontSize: '0.8rem', textTransform: 'none' }}
+            sx={{ py: 0.5, px: 1.5, fontSize: '0.8rem' }} // textTransform is already 'none' from theme
           >
             View Plan
           </Button>
