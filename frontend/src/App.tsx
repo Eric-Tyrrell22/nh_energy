@@ -141,7 +141,7 @@ function App() {
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
   const tableComponents = useMemo(() => MuiTableComponents(theme), [theme]);
 
-  const [filtersExpanded, setFiltersExpanded] = useState(true);
+  const [filtersExpanded, setFiltersExpanded] = useState(false);
 
   const [allPlans, setAllPlans] = useState<EnergyPlan[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
