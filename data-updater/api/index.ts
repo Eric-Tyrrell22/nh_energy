@@ -94,12 +94,12 @@ function extractSupplierDataFromHtml(html: string): SupplierPlan[] {
   return allSupplierPlanData;
 }
 
-async function getSupplierInfo(): Promise<SupplierPlan[] | undefined> {
+async function getSupplierInfo(choice: string): Promise<SupplierPlan[] | undefined> {
   try {
     console.log('Fetching supplier info...');
     const response = await axios.get('https://www.energy.nh.gov/engyapps/ceps/ResidentialCompare.aspx', {
       params: {
-        choice: 'Eversource'
+        choice
       },
       headers: {
         'User-Agent': 'Better NH Energy frontend',
