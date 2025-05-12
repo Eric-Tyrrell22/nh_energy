@@ -1,473 +1,90 @@
 // frontend/src/App.tsx
-import React, { useState, useEffect, useMemo, useCallback, useRef } from 'react';
-import type { RawEnergyPlan, EnergyPlan } from './types';
-import { useTheme, alpha } from '@mui/material/styles';
-import useMediaQuery from '@mui/material/useMediaQuery';
-import { Virtuoso, TableVirtuoso } from 'react-virtuoso';
+import React from 'react';
+import { Routes, Route, useParams, Link as RouterLink } from 'react-router-dom';
+import { Container, Typography, List, ListItem, ListItemText, Paper, IconButton, AppBar, Toolbar } from '@mui/material';
+import EnergyPlanExplorerPage from './components/EnergyPlanExplorerPage';
+import HomeIcon from '@mui/icons-material/Home';
+import ElectricalServicesIcon from '@mui/icons-material/ElectricalServices';
 
-// MUI Components
-import {
-  Container, Typography, Box, Grid, CircularProgress, Alert,
-  Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, TableSortLabel,
-  TextField, Select, MenuItem, FormControl, InputLabel, Slider, Button, IconButton,
-  Tooltip, Chip, Collapse
-} from '@mui/material';
-import { visuallyHidden } from '@mui/utils';
-import FilterListIcon from '@mui/icons-material/FilterList';
-import ClearAllIcon from '@mui/icons-material/ClearAll';
-import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
-import LinkIcon from '@mui/icons-material/Link';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import ExpandLessIcon from '@mui/icons-material/ExpandLess';
-
-import MobilePlanCard from './components/MobilePlanCard';
-
-// frontend/src/App.tsx
-
-// ... (All helper functions, type definitions, headCells, constants, MuiTableComponents remain the same as the last version) ...
-// ... (parseRateGoodFor, formatDate, type Order, SortableKey, HeadCell interface, headCells, RENEWABLE_FILTER_DEBOUNCE_MS, Filters interface, initialFilters are identical to previous)
-const parseRateGoodFor = (rateString?: string | null): number => {
-  if (!rateString) return 0;
-  const match = rateString.match(/(\d+)\s*months?/i);
-  return match ? parseInt(match[1], 10) : 0;
-};
-
-const formatDate = (date: Date | null): string => {
-  if (!date) return 'N/A';
-  return date.toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' });
-};
-
-type Order = 'asc' | 'desc';
-type SortableKey = keyof Pick<EnergyPlan, 'price_per_kwh' | 'percent_renewable' | 'supplier_name' | 'rate_is_good_for_months' | 'last_updated'>;
-
-interface HeadCell {
-  id: SortableKey | keyof EnergyPlan;
-  label: string;
-  numeric: boolean;
-  sortable: boolean;
-  minWidth?: number;
-  align?: 'left' | 'right' | 'center';
-  render?: (value: any, plan: EnergyPlan, theme: Theme) => React.ReactNode;
-}
-
-const headCells: readonly HeadCell[] = [
-  { id: 'supplier_name', numeric: false, label: 'Supplier', sortable: true, minWidth: 170 },
-  { id: 'plan_name', numeric: false, label: 'Plan Name', sortable: false, minWidth: 200 },
-  {
-    id: 'price_per_kwh', numeric: true, label: 'Price/kWh', sortable: true, minWidth: 120, align: 'right',
-    render: (value) => value === null ? 'N/A' : `$${Number(value).toFixed(4)}`
-  },
-  {
-    id: 'pricing_type', numeric: false, label: 'Type', sortable: false, minWidth: 100,
-    render: (value) => <Chip label={value} size="small" color={value === "Fixed" ? "primary" : value === "Variable" ? "secondary" : "default"} variant="outlined" />
-  },
-  {
-    id: 'percent_renewable', numeric: true, label: 'Renewable', sortable: true, minWidth: 120, align: 'right',
-    render: (value) => `${Number(value).toFixed(1)}%`
-  },
-  {
-    id: 'rate_is_good_for_months', numeric: true, label: 'Term', sortable: true, minWidth: 100, align: 'right',
-    render: (value, plan) => value > 0 ? `${value} mo` : (plan.rate_is_good_for || 'N/A')
-  },
-  {
-    id: 'has_cancellation_fee', numeric: false, label: 'Cancel Fee', sortable: false, minWidth: 100, align: 'center',
-    render: (value) => value ? 'Yes' : 'No'
-  },
-  {
-    id: 'last_updated', numeric: false, label: 'Updated', sortable: true, minWidth: 120,
-    render: (value) => formatDate(value as Date | null)
-  },
-  {
-    id: 'comments', numeric: false, label: 'Details', sortable: false, minWidth: 80, align: 'center',
-    render: (value, plan) => plan.comments ? (
-      <Tooltip title={<div style={{ whiteSpace: 'pre-line' }}>{plan.comments}</div>} arrow>
-        <IconButton size="small" aria-label="plan comments"><InfoOutlinedIcon fontSize="small" /></IconButton>
-      </Tooltip>
-    ) : '-'
-  },
-  {
-    id: 'link', label: 'Link', numeric: false, sortable: false, minWidth: 100, align: 'center',
-    render: (value, plan) => plan.link ? (
-      <Button variant="outlined" size="small" href={plan.link} target="_blank" rel="noopener noreferrer" startIcon={<LinkIcon />}
-        sx={{ py: 0.2, px: 1, fontSize: '0.75rem', textTransform: 'none' }}
-      >Visit</Button>
-    ) : '-'
-  },
+// Define available providers here
+// The key is used in the URL, the name for display, and file for the JSON data.
+const availableProviders = [
+  { key: 'Eversource', name: 'Eversource', file: 'Eversource.json' },
+  { key: 'Liberty', name: 'Liberty', file: 'Liberty.json' }, // Example for another provider
+  { key: 'NHEC', name: 'NHEC', file: 'NHEC.json' }, // Example for another provider
+  { key: 'Unitil', name: 'Unitil', file: 'Unitil.json' }, // Example for another provider
+  // Add more providers here
+  // { key: 'another_provider', name: 'Another Provider Inc.', file: 'another_provider.json' },
 ];
 
-const RENEWABLE_FILTER_DEBOUNCE_MS = 300;
-
-interface Filters {
-  supplier_name: string;
-  pricing_type: '' | 'Fixed' | 'Variable';
-  percent_renewable: number[];
-  has_cancellation_fee: '' | 'true' | 'false';
-  is_monthly_charge: '' | 'true' | 'false';
+function ProviderSelectionPage() {
+  return (
+    <Container maxWidth="sm" sx={{ mt: 4 }}>
+      <Paper elevation={3} sx={{ p: 3 }}>
+        <Typography variant="h4" component="h1" gutterBottom align="center">
+          Select Utility Provider
+        </Typography>
+        <List>
+          {availableProviders.map((provider) => (
+            <ListItem 
+              button 
+              component={RouterLink} 
+              to={`/plans/${provider.key}`} 
+              key={provider.key}
+              sx={{ 
+                border: '1px solid', 
+                borderColor: 'divider', 
+                borderRadius: 1, 
+                mb: 1,
+                '&:hover': { borderColor: 'primary.main', backgroundColor: 'action.hover' }
+              }}
+            >
+              <ElectricalServicesIcon sx={{mr:2, color: 'primary.main'}} />
+              <ListItemText primary={provider.name} secondary={`View plans for ${provider.name}`} />
+            </ListItem>
+          ))}
+        </List>
+      </Paper>
+    </Container>
+  );
 }
 
-const initialFilters: Filters = {
-  supplier_name: '',
-  pricing_type: '',
-  percent_renewable: [0, 100],
-  has_cancellation_fee: '',
-  is_monthly_charge: '',
-};
+function EnergyPlanExplorerWrapper() {
+  const { providerKey } = useParams<{ providerKey: string }>();
+  const provider = availableProviders.find(p => p.key === providerKey);
 
-const MuiTableComponents = (theme: Theme): VirtuosoTableComponents<EnergyPlan, unknown> => ({
-    Scroller: React.forwardRef<HTMLDivElement>((props, ref) => (
-      <TableContainer component={Paper} {...props} ref={ref} elevation={3} sx={{ width: '100%', ...props.sx }} />
-    )),
-    Table: (props) => (
-      <Table {...props} sx={{ borderCollapse: 'separate', minWidth: 900, width: '100%', tableLayout: 'auto', ...props.sx }} size="medium" />
-    ),
-    TableHead: React.forwardRef<HTMLTableSectionElement>((props, ref) => <TableHead {...props} ref={ref} />),
-    TableRow: React.forwardRef<HTMLTableRowElement, { item?: EnergyPlan; context?: unknown }>(({item: _item, context: _ctx, ...props }, ref) => (
-        <TableRow
-            hover
-            ref={ref}
-            {...props}
-            sx={{
-                '&:nth-of-type(odd)': { backgroundColor: alpha(theme.palette.action.hover, 0.03) },
-                '&:nth-of-type(even)': { backgroundColor: theme.palette.background.paper },
-                ...props.sx
-            }}
-        />
-    )),
-});
-
+  if (!provider) {
+    return (
+      <Container sx={{mt: 5}}>
+        <Alert severity="error">
+          Provider not found. Please select a provider from the <RouterLink to="/">homepage</RouterLink>.
+        </Alert>
+      </Container>
+    );
+  }
+  
+  const dataUrl = `${import.meta.env.BASE_URL}data/${provider.file}`;
+  return <EnergyPlanExplorerPage providerDataUrl={dataUrl} providerName={provider.name} />;
+}
 
 function App() {
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
-  const tableComponents = useMemo(() => MuiTableComponents(theme), [theme]);
-
-  const [filtersExpanded, setFiltersExpanded] = useState(false);
-
-  const [allPlans, setAllPlans] = useState<EnergyPlan[]>([]);
-  const [loading, setLoading] = useState<boolean>(true);
-  const [error, setError] = useState<string | null>(null);
-
-  // MODIFIED: Default sort order
-  const [primaryOrderBy, setPrimaryOrderBy] = useState<SortableKey>('price_per_kwh'); // Default to price
-  const [primaryOrder, setPrimaryOrder] = useState<Order>('asc'); // Ascending for price
-
-  const secondaryOrderBy: keyof Pick<EnergyPlan, 'price_per_kwh'> = 'price_per_kwh';
-  const [filters, setFilters] = useState<Filters>(initialFilters);
-  const [uiRenewableFilter, setUiRenewableFilter] = useState<number[]>(initialFilters.percent_renewable);
-
-  // useEffect for fetch, filter change, debounce, clear, sort
-  // ... (These all remain the same as the previous fully corrected version) ...
-  useEffect(() => {
-    const fetchPlans = async () => {
-      try {
-        const response = await fetch(`${import.meta.env.BASE_URL}data/supplier_data.json`);
-        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-        const rawData: RawEnergyPlan[] = await response.json();
-        const processedData: EnergyPlan[] = rawData.map((plan, index) => ({
-          supplier_name: plan.supplier_name || `Unknown Supplier ${index + 1}`,
-          plan_name: plan.plan_name || `Unnamed Plan ${index + 1}`,
-          price_per_kwh: plan.price_per_kwh === undefined ? null : plan.price_per_kwh,
-          last_updated: plan.last_updated ? new Date(plan.last_updated) : null,
-          pricing_type: (plan.pricing_type === "Fixed" || plan.pricing_type === "Variable") ? plan.pricing_type : "Unknown",
-          is_monthly_charge: plan.is_monthly_charge ?? false,
-          is_intro_price: plan.is_intro_price ?? false,
-          has_cancellation_fee: plan.has_cancellation_fee ?? false,
-          percent_renewable: plan.percent_renewable ?? 0,
-          rate_is_good_for: plan.rate_is_good_for || '',
-          rate_is_good_for_months: parseRateGoodFor(plan.rate_is_good_for),
-          rate_end: plan.rate_end || '',
-          comments: plan.comments || '',
-          link: plan.link || undefined,
-        }));
-        setAllPlans(processedData);
-      } catch (e) { setError(e instanceof Error ? e.message : String(e)); }
-      finally { setLoading(false); }
-    };
-    fetchPlans();
-  }, []);
-
-  const handleFilterChange = useCallback(<K extends keyof Filters>(filterName: K, value: Filters[K]) => {
-    setFilters(prev => ({ ...prev, [filterName]: value }));
-  }, []);
-
-  useEffect(() => {
-    const handler = setTimeout(() => {
-      if (uiRenewableFilter[0] !== filters.percent_renewable[0] || uiRenewableFilter[1] !== filters.percent_renewable[1]) {
-        handleFilterChange('percent_renewable', uiRenewableFilter);
-      }
-    }, RENEWABLE_FILTER_DEBOUNCE_MS);
-    return () => clearTimeout(handler);
-  }, [uiRenewableFilter, filters.percent_renewable, handleFilterChange]);
-
-  const handleRenewableSliderChange = (_: Event, newValue: number | number[]) => {
-    setUiRenewableFilter(newValue as number[]);
-  };
-
-  const clearFilters = useCallback(() => {
-    setFilters(initialFilters);
-    setUiRenewableFilter(initialFilters.percent_renewable);
-    if (!filtersExpanded) setFiltersExpanded(true);
-  }, [filtersExpanded]);
-
-  const handleRequestSort = useCallback((property: SortableKey) => {
-    const isCurrentPrimary = primaryOrderBy === property;
-    if (isCurrentPrimary) {
-      setPrimaryOrder(prevOrder => (prevOrder === 'asc' ? 'desc' : 'asc'));
-    } else {
-      setPrimaryOrderBy(property);
-      // Default sort direction when changing column
-      if (property === 'price_per_kwh' || property === 'rate_is_good_for_months') {
-        setPrimaryOrder('asc');
-      } else if (property === 'percent_renewable') {
-        setPrimaryOrder('desc'); // Specific default for renewable
-      } else { // supplier_name, last_updated
-        setPrimaryOrder('asc');
-      }
-    }
-  }, [primaryOrderBy]);
-
-  const filteredAndSortedPlans = useMemo(() => {
-    let currentPlans = [...allPlans];
-    // Filtering logic
-    if (filters.supplier_name) {
-      currentPlans = currentPlans.filter(plan =>
-        plan.supplier_name.toLowerCase().includes(filters.supplier_name.toLowerCase())
-      );
-    }
-    if (filters.pricing_type) {
-      currentPlans = currentPlans.filter(plan => plan.pricing_type === filters.pricing_type);
-    }
-    currentPlans = currentPlans.filter(plan =>
-      plan.percent_renewable >= filters.percent_renewable[0] && plan.percent_renewable <= filters.percent_renewable[1]
-    );
-    if (filters.has_cancellation_fee) {
-      currentPlans = currentPlans.filter(plan => String(plan.has_cancellation_fee) === filters.has_cancellation_fee);
-    }
-    if (filters.is_monthly_charge) {
-      currentPlans = currentPlans.filter(plan => String(plan.is_monthly_charge) === filters.is_monthly_charge);
-    }
-
-    // Sorting logic
-    return currentPlans.sort((a, b) => {
-      let valA_primary_any: any = a[primaryOrderBy];
-      let valB_primary_any: any = b[primaryOrderBy];
-      const isPrimaryAsc = primaryOrder === 'asc';
-
-      if (primaryOrderBy === 'price_per_kwh') {
-          valA_primary_any = valA_primary_any === null ? (isPrimaryAsc ? Infinity : -Infinity) : valA_primary_any;
-          valB_primary_any = valB_primary_any === null ? (isPrimaryAsc ? Infinity : -Infinity) : valB_primary_any;
-      } else if (primaryOrderBy === 'percent_renewable' || primaryOrderBy === 'rate_is_good_for_months'){
-          valA_primary_any = valA_primary_any === null ? (isPrimaryAsc ? -Infinity : Infinity) : valA_primary_any;
-          valB_primary_any = valB_primary_any === null ? (isPrimaryAsc ? -Infinity : Infinity) : valB_primary_any;
-      } else if (primaryOrderBy === 'last_updated') {
-          valA_primary_any = (valA_primary_any as Date | null) ? (valA_primary_any as Date).getTime() : -Infinity;
-          valB_primary_any = (valB_primary_any as Date | null) ? (valB_primary_any as Date).getTime() : -Infinity;
-      } else if (typeof valA_primary_any === 'string' && typeof valB_primary_any === 'string') {
-          valA_primary_any = valA_primary_any.toLowerCase();
-          valB_primary_any = valB_primary_any.toLowerCase();
-      }
-
-      let primaryComparison = 0;
-      if (valA_primary_any < valB_primary_any) primaryComparison = -1;
-      else if (valA_primary_any > valB_primary_any) primaryComparison = 1;
-      
-      if (!isPrimaryAsc) primaryComparison *= -1;
-
-      if (primaryComparison !== 0) return primaryComparison;
-
-      // Conditional Secondary Sort
-      if (!isMobile) {
-        let valA_secondary = a[secondaryOrderBy];
-        let valB_secondary = b[secondaryOrderBy];
-        valA_secondary = valA_secondary === null ? Infinity : valA_secondary;
-        valB_secondary = valB_secondary === null ? Infinity : valB_secondary;
-        
-        if (valA_secondary < valB_secondary) return -1; 
-        if (valA_secondary > valB_secondary) return 1;  
-      }
-      
-      return 0;
-    });
-  }, [allPlans, primaryOrder, primaryOrderBy, filters, secondaryOrderBy, isMobile]);
-
-
-  const NoPlansMessage = () => (
-    // ... NoPlansMessage remains the same
-    <Box sx={{ textAlign: 'center', py: 10 }}>
-        <Typography variant="h6" color="textSecondary" gutterBottom>
-            No plans match your criteria.
-        </Typography>
-        <Typography variant="body1" color="textSecondary" sx={{ mb: 2 }}>
-            Try adjusting your filters or view all plans.
-        </Typography>
-        <Button variant="outlined" onClick={clearFilters}>
-            Clear All Filters
-        </Button>
-    </Box>
-  );
-
-  const fixedHeaderContent = useCallback(() => (
-    // ... fixedHeaderContent remains the same
-    <TableRow sx={{ backgroundColor: alpha(theme.palette.primary.light, 0.2), zIndex: 1, position: 'sticky', top: 0 }}>
-      {headCells.map((headCell) => (
-        <TableCell
-          key={headCell.id as string}
-          align={headCell.align || (headCell.numeric ? 'right' : 'left')}
-          padding="normal"
-          sortDirection={headCell.sortable && primaryOrderBy === headCell.id ? primaryOrder : false}
-          sx={{ fontWeight: 'bold', color: 'primary.dark', minWidth: headCell.minWidth, whiteSpace: 'nowrap' }}
-        >
-          {headCell.sortable ? (
-            <TableSortLabel
-              active={primaryOrderBy === headCell.id}
-              direction={primaryOrderBy === headCell.id ? primaryOrder : 'asc'}
-              onClick={() => headCell.sortable && handleRequestSort(headCell.id as SortableKey)}
-            >
-              {headCell.label}
-              {primaryOrderBy === headCell.id ? <Box component="span" sx={visuallyHidden}>{primaryOrder === 'desc' ? 'sorted descending' : 'sorted ascending'}</Box> : null}
-            </TableSortLabel>
-          ) : (
-            headCell.label
-          )}
-        </TableCell>
-      ))}
-    </TableRow>
-  ), [primaryOrder, primaryOrderBy, handleRequestSort, theme]);
-
-  const rowContent = useCallback((_index: number, plan: EnergyPlan) => (
-    // ... rowContent remains the same
-    <>
-      {headCells.map(cell => (
-        <TableCell key={cell.id as string} align={cell.align || (cell.numeric ? 'right' : 'left')}>
-            {cell.render ? cell.render(plan[cell.id as keyof EnergyPlan], plan, theme) : String(plan[cell.id as keyof EnergyPlan] ?? 'N/A')}
-        </TableCell>
-      ))}
-    </>
-  ), [theme]);
-
-  const toggleFiltersExpanded = () => {
-    // ... toggleFiltersExpanded remains the same
-    setFiltersExpanded(prev => !prev);
-  };
-
-  if (loading) return <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}><CircularProgress size={60} /><Typography variant="h6" sx={{ml: 2}}>Loading energy plans...</Typography></Box>;
-  if (error) return <Container sx={{mt: 5}}><Alert severity="error" variant="filled">Failed to load plans: {error}</Alert></Container>;
-
   return (
-    // ... JSX structure remains the same
-    <Container maxWidth="100%" sx={{ py: 1 }}>
-      <Typography variant={isMobile ? "h4" : "h3"} component="h1" gutterBottom align="center" sx={{ mb: 3, color: 'primary.dark', fontWeight: 'medium' }}>
-        Energy Plan Explorer
-      </Typography>
-
-      <Paper elevation={3} sx={{ p: {xs: 1.5, sm: 2.5}, mb: 3, backgroundColor: 'background.paper' }}>
-        <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: filtersExpanded ? 2 : 0, cursor: 'pointer' }} onClick={toggleFiltersExpanded}>
-          <Typography variant="h6" component="div" sx={{ display: 'flex', alignItems: 'center', color: 'primary.main' }}>
-            <FilterListIcon sx={{ mr: 1 }} />
-            Filter Options
+    <>
+      <AppBar position="static" sx={{ mb: 2 }}>
+        <Toolbar>
+          <IconButton component={RouterLink} to="/" edge="start" color="inherit" aria-label="home" sx={{ mr: 2 }}>
+            <HomeIcon />
+          </IconButton>
+          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+            Utility Plan Finder
           </Typography>
-          <Box sx={{display: 'flex', alignItems: 'center'}}>
-            {filtersExpanded && (
-                 <Button variant="outlined" color="primary" startIcon={<ClearAllIcon />} onClick={(e) => { e.stopPropagation(); clearFilters();}} size="small" sx={{mr: 1}}>
-                    Clear Filters
-                </Button>
-            )}
-            <IconButton size="small" aria-label={filtersExpanded ? "collapse filters" : "expand filters"}>
-                {filtersExpanded ? <ExpandLessIcon /> : <ExpandMoreIcon />}
-            </IconButton>
-          </Box>
-        </Box>
-        <Collapse in={filtersExpanded} timeout="auto" unmountOnExit>
-          <Grid container spacing={2.5} alignItems="flex-end" sx={{ pt: 2 }}>
-            {/* Filter Grid items ... (same as before) */}
-            <Grid item size={{ xs: 12, sm: 6, md: 3, lg: 2 }}>
-                <TextField
-                fullWidth label="Supplier Name" variant="outlined" size="small"
-                value={filters.supplier_name}
-                onChange={(e) => handleFilterChange('supplier_name', e.target.value)}
-                />
-            </Grid>
-            <Grid item size={{ xs: 12, sm: 6, md: 2, lg: 2 }}>
-                <FormControl fullWidth variant="outlined" size="small">
-                <InputLabel>Type</InputLabel> 
-                <Select
-                    value={filters.pricing_type}
-                    onChange={(e) => handleFilterChange('pricing_type', e.target.value as Filters['pricing_type'])}
-                    label="Type"
-                >
-                    <MenuItem value=""><em>All Types</em></MenuItem>
-                    <MenuItem value="Fixed">Fixed</MenuItem>
-                    <MenuItem value="Variable">Variable</MenuItem>
-                </Select>
-                </FormControl>
-            </Grid>
-            <Grid item size={{ xs: 12, sm: 12, md: 4, lg: 3 }} sx={{ px: { xs: 2, sm: 2} }}>
-                <Typography gutterBottom variant="caption" sx={{ display: 'block', color: 'text.secondary', mb: -0.5, ml: 0.5 }}>
-                    Renewable % ({uiRenewableFilter[0]}% - {uiRenewableFilter[1]}%)
-                </Typography>
-                <Slider
-                value={uiRenewableFilter}
-                onChange={handleRenewableSliderChange}
-                valueLabelDisplay="auto"
-                min={0} max={100} size="small"
-                marks={[{value: 0, label: '0%'}, {value: 50, label: '50%'}, {value: 100, label: '100%'}]}
-                sx={{mt: 0.5}}
-                />
-            </Grid>
-            <Grid item size={{ xs: 12, sm: 6, md: 3, lg: 2 }}>
-                <FormControl fullWidth variant="outlined" size="small">
-                <InputLabel>Cancel Fee</InputLabel>
-                <Select
-                    value={filters.has_cancellation_fee}
-                    onChange={(e) => handleFilterChange('has_cancellation_fee', e.target.value as Filters['has_cancellation_fee'])}
-                    label="Cancel Fee"
-                >
-                    <MenuItem value=""><em>Any</em></MenuItem>
-                    <MenuItem value="true">Yes</MenuItem>
-                    <MenuItem value="false">No</MenuItem>
-                </Select>
-                </FormControl>
-            </Grid>
-            <Grid item size={{ xs: 12, sm: 6, md: 12, lg: 3 }}>
-                <FormControl fullWidth variant="outlined" size="small">
-                <InputLabel>Monthly Charge</InputLabel>
-                <Select
-                    value={filters.is_monthly_charge}
-                    onChange={(e) => handleFilterChange('is_monthly_charge', e.target.value as Filters['is_monthly_charge'])}
-                    label="Monthly Charge"
-                >
-                    <MenuItem value=""><em>Any</em></MenuItem>
-                    <MenuItem value="true">Yes</MenuItem>
-                    <MenuItem value="false">No</MenuItem>
-                </Select>
-                </FormControl>
-            </Grid>
-          </Grid>
-        </Collapse>
-      </Paper>
-
-      <Box>
-        {filteredAndSortedPlans.length === 0 ? (
-          <NoPlansMessage />
-        ) : isMobile ? (
-          <Virtuoso
-            useWindowScroll
-            data={filteredAndSortedPlans}
-            itemContent={(_index, plan) => <MobilePlanCard plan={plan} />}
-            overscan={200}
-          />
-        ) : (
-          <TableVirtuoso
-            style={{ height: 'calc(100vh - 280px)' }}
-            data={filteredAndSortedPlans}
-            components={tableComponents}
-            fixedHeaderContent={fixedHeaderContent}
-            itemContent={rowContent}
-            overscan={10}
-          />
-        )}
-      </Box>
-    </Container>
+        </Toolbar>
+      </AppBar>
+      <Routes>
+        <Route path="/" element={<ProviderSelectionPage />} />
+        <Route path="/plans/:providerKey" element={<EnergyPlanExplorerWrapper />} />
+      </Routes>
+    </>
   );
 }
 

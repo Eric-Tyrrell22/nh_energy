@@ -1,4 +1,5 @@
-// This interface matches the structure of your JSON data
+import type { Theme } from '@mui/material/styles';
+
 export interface RawEnergyPlan {
   supplier_name?: string | null;
   plan_name?: string | null;
@@ -31,4 +32,27 @@ export interface EnergyPlan {
   rate_end: string;               // Default to empty string
   comments: string;               // Default to empty string
   link: string;
+}
+
+export type Order = 'asc' | 'desc';
+
+// Only include keys that are actually sortable from EnergyPlan
+export type SortableKey = Extract<keyof EnergyPlan, 'price_per_kwh' | 'percent_renewable' | 'supplier_name' | 'rate_is_good_for_months' | 'last_updated'>;
+
+export interface HeadCell {
+  id: keyof EnergyPlan; // All columns must map to an EnergyPlan key
+  label: string;
+  numeric: boolean;
+  sortable: boolean; // Indicates if this column *can* be sorted
+  minWidth?: number;
+  align?: 'left' | 'right' | 'center';
+  render?: (value: any, plan: EnergyPlan, theme: Theme) => React.ReactNode;
+}
+
+export interface Filters {
+  supplier_name: string;
+  pricing_type: '' | 'Fixed' | 'Variable';
+  percent_renewable: number[]; // [min, max]
+  has_cancellation_fee: '' | 'true' | 'false';
+  is_monthly_charge: '' | 'true' | 'false';
 }

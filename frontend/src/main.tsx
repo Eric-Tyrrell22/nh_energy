@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom/client';
 import App from './App.tsx';
 import './index.css'; // You might want to clear this out or keep minimal resets
 import { ThemeProvider, createTheme, alpha } from '@mui/material/styles';
+import { BrowserRouter } from 'react-router-dom';
 import CssBaseline from '@mui/material/CssBaseline';
 
 // More polished theme
@@ -88,9 +89,11 @@ const theme = createTheme({
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <ThemeProvider theme={theme}>
-      <CssBaseline /> {/* Normalize CSS and apply theme background */}
-      <App />
-    </ThemeProvider>
+    <BrowserRouter>
+      <ThemeProvider theme={theme}> {/* Apply MUI theme globally */}
+        <CssBaseline /> {/* MUI's CSS reset */}
+        <App />
+      </ThemeProvider>
+    </BrowserRouter>
   </React.StrictMode>,
 );
