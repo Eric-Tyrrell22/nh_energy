@@ -1,21 +1,31 @@
 // frontend/src/App.tsx
-import React, { useState, useEffect, useMemo, useCallback } from 'react';
+import React, { useState, useEffect, useMemo, useCallback, useRef } from 'react';
 import type { RawEnergyPlan, EnergyPlan } from './types';
 import { useTheme, alpha } from '@mui/material/styles';
+import useMediaQuery from '@mui/material/useMediaQuery';
+import { Virtuoso, TableVirtuoso } from 'react-virtuoso';
 
 // MUI Components
 import {
   Container, Typography, Box, Grid, CircularProgress, Alert,
   Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, TableSortLabel,
   TextField, Select, MenuItem, FormControl, InputLabel, Slider, Button, IconButton,
-  Tooltip, Chip
+  Tooltip, Chip, Collapse
 } from '@mui/material';
 import { visuallyHidden } from '@mui/utils';
 import FilterListIcon from '@mui/icons-material/FilterList';
 import ClearAllIcon from '@mui/icons-material/ClearAll';
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
+import LinkIcon from '@mui/icons-material/Link';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 
-// Helper to parse "X months" into a number
+import MobilePlanCard from './components/MobilePlanCard';
+
+// frontend/src/App.tsx
+
+// ... (All helper functions, type definitions, headCells, constants, MuiTableComponents remain the same as the last version) ...
+// ... (parseRateGoodFor, formatDate, type Order, SortableKey, HeadCell interface, headCells, RENEWABLE_FILTER_DEBOUNCE_MS, Filters interface, initialFilters are identical to previous)
 const parseRateGoodFor = (rateString?: string | null): number => {
   if (!rateString) return 0;
   const match = rateString.match(/(\d+)\s*months?/i);
@@ -31,13 +41,13 @@ type Order = 'asc' | 'desc';
 type SortableKey = keyof Pick<EnergyPlan, 'price_per_kwh' | 'percent_renewable' | 'supplier_name' | 'rate_is_good_for_months' | 'last_updated'>;
 
 interface HeadCell {
-  id: SortableKey | keyof EnergyPlan; // Allow non-sortable keys for non-sortable columns
+  id: SortableKey | keyof EnergyPlan;
   label: string;
   numeric: boolean;
   sortable: boolean;
   minWidth?: number;
   align?: 'left' | 'right' | 'center';
-  render?: (value: any, plan: EnergyPlan) => React.ReactNode;
+  render?: (value: any, plan: EnergyPlan, theme: Theme) => React.ReactNode;
 }
 
 const headCells: readonly HeadCell[] = [
@@ -71,11 +81,21 @@ const headCells: readonly HeadCell[] = [
     id: 'comments', numeric: false, label: 'Details', sortable: false, minWidth: 80, align: 'center',
     render: (value, plan) => plan.comments ? (
       <Tooltip title={<div style={{ whiteSpace: 'pre-line' }}>{plan.comments}</div>} arrow>
-        <IconButton size="small"><InfoOutlinedIcon fontSize="small" /></IconButton>
+        <IconButton size="small" aria-label="plan comments"><InfoOutlinedIcon fontSize="small" /></IconButton>
       </Tooltip>
     ) : '-'
   },
+  {
+    id: 'link', label: 'Link', numeric: false, sortable: false, minWidth: 100, align: 'center',
+    render: (value, plan) => plan.link ? (
+      <Button variant="outlined" size="small" href={plan.link} target="_blank" rel="noopener noreferrer" startIcon={<LinkIcon />}
+        sx={{ py: 0.2, px: 1, fontSize: '0.75rem', textTransform: 'none' }}
+      >Visit</Button>
+    ) : '-'
+  },
 ];
+
+const RENEWABLE_FILTER_DEBOUNCE_MS = 300;
 
 interface Filters {
   supplier_name: string;
@@ -93,20 +113,50 @@ const initialFilters: Filters = {
   is_monthly_charge: '',
 };
 
+const MuiTableComponents = (theme: Theme): VirtuosoTableComponents<EnergyPlan, unknown> => ({
+    Scroller: React.forwardRef<HTMLDivElement>((props, ref) => (
+      <TableContainer component={Paper} {...props} ref={ref} elevation={3} sx={{ width: '100%', ...props.sx }} />
+    )),
+    Table: (props) => (
+      <Table {...props} sx={{ borderCollapse: 'separate', minWidth: 900, width: '100%', tableLayout: 'auto', ...props.sx }} size="medium" />
+    ),
+    TableHead: React.forwardRef<HTMLTableSectionElement>((props, ref) => <TableHead {...props} ref={ref} />),
+    TableRow: React.forwardRef<HTMLTableRowElement, { item?: EnergyPlan; context?: unknown }>(({item: _item, context: _ctx, ...props }, ref) => (
+        <TableRow
+            hover
+            ref={ref}
+            {...props}
+            sx={{
+                '&:nth-of-type(odd)': { backgroundColor: alpha(theme.palette.action.hover, 0.03) },
+                '&:nth-of-type(even)': { backgroundColor: theme.palette.background.paper },
+                ...props.sx
+            }}
+        />
+    )),
+});
+
+
 function App() {
   const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
+  const tableComponents = useMemo(() => MuiTableComponents(theme), [theme]);
+
+  const [filtersExpanded, setFiltersExpanded] = useState(true);
+
   const [allPlans, setAllPlans] = useState<EnergyPlan[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
-  // Sorting State
-  const [primaryOrderBy, setPrimaryOrderBy] = useState<SortableKey>('percent_renewable');
-  const [primaryOrder, setPrimaryOrder] = useState<Order>('desc');
-  const secondaryOrderBy: keyof Pick<EnergyPlan, 'price_per_kwh'> = 'price_per_kwh'; // Always price
-  const secondaryOrder: Order = 'asc'; // Always ascending for price
+  // MODIFIED: Default sort order
+  const [primaryOrderBy, setPrimaryOrderBy] = useState<SortableKey>('price_per_kwh'); // Default to price
+  const [primaryOrder, setPrimaryOrder] = useState<Order>('asc'); // Ascending for price
 
+  const secondaryOrderBy: keyof Pick<EnergyPlan, 'price_per_kwh'> = 'price_per_kwh';
   const [filters, setFilters] = useState<Filters>(initialFilters);
+  const [uiRenewableFilter, setUiRenewableFilter] = useState<number[]>(initialFilters.percent_renewable);
 
+  // useEffect for fetch, filter change, debounce, clear, sort
+  // ... (These all remain the same as the previous fully corrected version) ...
   useEffect(() => {
     const fetchPlans = async () => {
       try {
@@ -127,6 +177,7 @@ function App() {
           rate_is_good_for_months: parseRateGoodFor(plan.rate_is_good_for),
           rate_end: plan.rate_end || '',
           comments: plan.comments || '',
+          link: plan.link || undefined,
         }));
         setAllPlans(processedData);
       } catch (e) { setError(e instanceof Error ? e.message : String(e)); }
@@ -139,31 +190,45 @@ function App() {
     setFilters(prev => ({ ...prev, [filterName]: value }));
   }, []);
 
+  useEffect(() => {
+    const handler = setTimeout(() => {
+      if (uiRenewableFilter[0] !== filters.percent_renewable[0] || uiRenewableFilter[1] !== filters.percent_renewable[1]) {
+        handleFilterChange('percent_renewable', uiRenewableFilter);
+      }
+    }, RENEWABLE_FILTER_DEBOUNCE_MS);
+    return () => clearTimeout(handler);
+  }, [uiRenewableFilter, filters.percent_renewable, handleFilterChange]);
+
+  const handleRenewableSliderChange = (_: Event, newValue: number | number[]) => {
+    setUiRenewableFilter(newValue as number[]);
+  };
+
   const clearFilters = useCallback(() => {
     setFilters(initialFilters);
-  }, []);
+    setUiRenewableFilter(initialFilters.percent_renewable);
+    if (!filtersExpanded) setFiltersExpanded(true);
+  }, [filtersExpanded]);
 
-  const handleRequestSort = (property: SortableKey) => {
+  const handleRequestSort = useCallback((property: SortableKey) => {
     const isCurrentPrimary = primaryOrderBy === property;
     if (isCurrentPrimary) {
-      setPrimaryOrder(primaryOrder === 'asc' ? 'desc' : 'asc');
+      setPrimaryOrder(prevOrder => (prevOrder === 'asc' ? 'desc' : 'asc'));
     } else {
       setPrimaryOrderBy(property);
       // Default sort direction when changing column
       if (property === 'price_per_kwh' || property === 'rate_is_good_for_months') {
         setPrimaryOrder('asc');
       } else if (property === 'percent_renewable') {
-        setPrimaryOrder('desc');
+        setPrimaryOrder('desc'); // Specific default for renewable
       } else { // supplier_name, last_updated
         setPrimaryOrder('asc');
       }
     }
-  };
+  }, [primaryOrderBy]);
 
   const filteredAndSortedPlans = useMemo(() => {
     let currentPlans = [...allPlans];
-
-    // Filtering logic (same as before)
+    // Filtering logic
     if (filters.supplier_name) {
       currentPlans = currentPlans.filter(plan =>
         plan.supplier_name.toLowerCase().includes(filters.supplier_name.toLowerCase())
@@ -182,214 +247,226 @@ function App() {
       currentPlans = currentPlans.filter(plan => String(plan.is_monthly_charge) === filters.is_monthly_charge);
     }
 
-    // Multi-level Sorting
+    // Sorting logic
     return currentPlans.sort((a, b) => {
-      // Primary Sort
-      let valA_primary = a[primaryOrderBy];
-      let valB_primary = b[primaryOrderBy];
+      let valA_primary_any: any = a[primaryOrderBy];
+      let valB_primary_any: any = b[primaryOrderBy];
+      const isPrimaryAsc = primaryOrder === 'asc';
 
-      // Handle nulls and types for primary sort key
-      if (primaryOrderBy === 'price_per_kwh' || primaryOrderBy === 'percent_renewable' || primaryOrderBy === 'rate_is_good_for_months') {
-        // For numeric sorts, treat nulls as lowest or highest based on typical preference
-        // Price: null is "bad" (high). Renewable: null (defaulted to 0) is low. Term: null (0) is low.
-        const isAsc = primaryOrder === 'asc';
-        if (primaryOrderBy === 'price_per_kwh') {
-            valA_primary = valA_primary === null ? (isAsc ? Infinity : -Infinity) : valA_primary;
-            valB_primary = valB_primary === null ? (isAsc ? Infinity : -Infinity) : valB_primary;
-        } else { // percent_renewable, rate_is_good_for_months (already defaulted if null)
-            valA_primary = valA_primary === null ? (isAsc ? -Infinity : Infinity) : valA_primary;
-            valB_primary = valB_primary === null ? (isAsc ? -Infinity : Infinity) : valB_primary;
-        }
+      if (primaryOrderBy === 'price_per_kwh') {
+          valA_primary_any = valA_primary_any === null ? (isPrimaryAsc ? Infinity : -Infinity) : valA_primary_any;
+          valB_primary_any = valB_primary_any === null ? (isPrimaryAsc ? Infinity : -Infinity) : valB_primary_any;
+      } else if (primaryOrderBy === 'percent_renewable' || primaryOrderBy === 'rate_is_good_for_months'){
+          valA_primary_any = valA_primary_any === null ? (isPrimaryAsc ? -Infinity : Infinity) : valA_primary_any;
+          valB_primary_any = valB_primary_any === null ? (isPrimaryAsc ? -Infinity : Infinity) : valB_primary_any;
       } else if (primaryOrderBy === 'last_updated') {
-        const isAsc = primaryOrder === 'asc';
-        valA_primary = valA_primary === null ? (isAsc ? new Date(0) : new Date('9999-12-31')) : valA_primary;
-        valB_primary = valB_primary === null ? (isAsc ? new Date(0) : new Date('9999-12-31')) : valB_primary;
-      } else if (typeof valA_primary === 'string' && typeof valB_primary === 'string') {
-        valA_primary = valA_primary.toLowerCase();
-        valB_primary = valB_primary.toLowerCase();
+          valA_primary_any = (valA_primary_any as Date | null) ? (valA_primary_any as Date).getTime() : -Infinity;
+          valB_primary_any = (valB_primary_any as Date | null) ? (valB_primary_any as Date).getTime() : -Infinity;
+      } else if (typeof valA_primary_any === 'string' && typeof valB_primary_any === 'string') {
+          valA_primary_any = valA_primary_any.toLowerCase();
+          valB_primary_any = valB_primary_any.toLowerCase();
       }
 
       let primaryComparison = 0;
-      if (valA_primary < valB_primary) primaryComparison = -1;
-      if (valA_primary > valB_primary) primaryComparison = 1;
-      if (primaryOrder === 'desc') primaryComparison *= -1;
-
-      if (primaryComparison !== 0) {
-        return primaryComparison;
-      }
-
-      // Secondary Sort (always by price_per_kwh, ascending)
-      let valA_secondary = a[secondaryOrderBy];
-      let valB_secondary = b[secondaryOrderBy];
-
-      // Price: null is "bad" (high), so Infinity for ascending sort
-      valA_secondary = valA_secondary === null ? Infinity : valA_secondary;
-      valB_secondary = valB_secondary === null ? Infinity : valB_secondary;
+      if (valA_primary_any < valB_primary_any) primaryComparison = -1;
+      else if (valA_primary_any > valB_primary_any) primaryComparison = 1;
       
-      if (valA_secondary < valB_secondary) return -1; // secondaryOrder is 'asc'
-      if (valA_secondary > valB_secondary) return 1;  // secondaryOrder is 'asc'
+      if (!isPrimaryAsc) primaryComparison *= -1;
+
+      if (primaryComparison !== 0) return primaryComparison;
+
+      // Conditional Secondary Sort
+      if (!isMobile) {
+        let valA_secondary = a[secondaryOrderBy];
+        let valB_secondary = b[secondaryOrderBy];
+        valA_secondary = valA_secondary === null ? Infinity : valA_secondary;
+        valB_secondary = valB_secondary === null ? Infinity : valB_secondary;
+        
+        if (valA_secondary < valB_secondary) return -1; 
+        if (valA_secondary > valB_secondary) return 1;  
+      }
       
       return 0;
     });
-  }, [allPlans, primaryOrder, primaryOrderBy, filters, secondaryOrderBy, secondaryOrder]);
+  }, [allPlans, primaryOrder, primaryOrderBy, filters, secondaryOrderBy, isMobile]);
 
-  if (loading) return <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}><CircularProgress size={60} /><Typography sx={{ml: 2}}>Loading plans...</Typography></Box>;
+
+  const NoPlansMessage = () => (
+    // ... NoPlansMessage remains the same
+    <Box sx={{ textAlign: 'center', py: 10 }}>
+        <Typography variant="h6" color="textSecondary" gutterBottom>
+            No plans match your criteria.
+        </Typography>
+        <Typography variant="body1" color="textSecondary" sx={{ mb: 2 }}>
+            Try adjusting your filters or view all plans.
+        </Typography>
+        <Button variant="outlined" onClick={clearFilters}>
+            Clear All Filters
+        </Button>
+    </Box>
+  );
+
+  const fixedHeaderContent = useCallback(() => (
+    // ... fixedHeaderContent remains the same
+    <TableRow sx={{ backgroundColor: alpha(theme.palette.primary.light, 0.2), zIndex: 1, position: 'sticky', top: 0 }}>
+      {headCells.map((headCell) => (
+        <TableCell
+          key={headCell.id as string}
+          align={headCell.align || (headCell.numeric ? 'right' : 'left')}
+          padding="normal"
+          sortDirection={headCell.sortable && primaryOrderBy === headCell.id ? primaryOrder : false}
+          sx={{ fontWeight: 'bold', color: 'primary.dark', minWidth: headCell.minWidth, whiteSpace: 'nowrap' }}
+        >
+          {headCell.sortable ? (
+            <TableSortLabel
+              active={primaryOrderBy === headCell.id}
+              direction={primaryOrderBy === headCell.id ? primaryOrder : 'asc'}
+              onClick={() => headCell.sortable && handleRequestSort(headCell.id as SortableKey)}
+            >
+              {headCell.label}
+              {primaryOrderBy === headCell.id ? <Box component="span" sx={visuallyHidden}>{primaryOrder === 'desc' ? 'sorted descending' : 'sorted ascending'}</Box> : null}
+            </TableSortLabel>
+          ) : (
+            headCell.label
+          )}
+        </TableCell>
+      ))}
+    </TableRow>
+  ), [primaryOrder, primaryOrderBy, handleRequestSort, theme]);
+
+  const rowContent = useCallback((_index: number, plan: EnergyPlan) => (
+    // ... rowContent remains the same
+    <>
+      {headCells.map(cell => (
+        <TableCell key={cell.id as string} align={cell.align || (cell.numeric ? 'right' : 'left')}>
+            {cell.render ? cell.render(plan[cell.id as keyof EnergyPlan], plan, theme) : String(plan[cell.id as keyof EnergyPlan] ?? 'N/A')}
+        </TableCell>
+      ))}
+    </>
+  ), [theme]);
+
+  const toggleFiltersExpanded = () => {
+    // ... toggleFiltersExpanded remains the same
+    setFiltersExpanded(prev => !prev);
+  };
+
+  if (loading) return <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}><CircularProgress size={60} /><Typography variant="h6" sx={{ml: 2}}>Loading energy plans...</Typography></Box>;
   if (error) return <Container sx={{mt: 5}}><Alert severity="error" variant="filled">Failed to load plans: {error}</Alert></Container>;
 
   return (
+    // ... JSX structure remains the same
     <Container maxWidth="xl" sx={{ py: 3 }}>
-      <Typography variant="h3" component="h1" gutterBottom align="center" sx={{ mb: 3, color: 'primary.dark' }}>
+      <Typography variant={isMobile ? "h4" : "h3"} component="h1" gutterBottom align="center" sx={{ mb: 3, color: 'primary.dark', fontWeight: 'medium' }}>
         Energy Plan Explorer
       </Typography>
 
-      <Paper elevation={3} sx={{ p: 2.5, mb: 3, backgroundColor: 'background.paper' }}>
-        <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 2 }}>
+      <Paper elevation={3} sx={{ p: {xs: 1.5, sm: 2.5}, mb: 3, backgroundColor: 'background.paper' }}>
+        <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: filtersExpanded ? 2 : 0, cursor: 'pointer' }} onClick={toggleFiltersExpanded}>
           <Typography variant="h6" component="div" sx={{ display: 'flex', alignItems: 'center', color: 'primary.main' }}>
             <FilterListIcon sx={{ mr: 1 }} />
             Filter Options
           </Typography>
-          <Button variant="outlined" color="primary" startIcon={<ClearAllIcon />} onClick={clearFilters} size="small">
-            Clear All Filters
-          </Button>
+          <Box sx={{display: 'flex', alignItems: 'center'}}>
+            {filtersExpanded && (
+                 <Button variant="outlined" color="primary" startIcon={<ClearAllIcon />} onClick={(e) => { e.stopPropagation(); clearFilters();}} size="small" sx={{mr: 1}}>
+                    Clear Filters
+                </Button>
+            )}
+            <IconButton size="small" aria-label={filtersExpanded ? "collapse filters" : "expand filters"}>
+                {filtersExpanded ? <ExpandLessIcon /> : <ExpandMoreIcon />}
+            </IconButton>
+          </Box>
         </Box>
-        <Grid container spacing={2.5} alignItems="flex-end">
-          <Grid
-						item 
-						size={{ xs: 12, sm: 6, md: 2.5, lg: 2}}
-					>
-            <TextField
-              fullWidth
-              label="Supplier Name"
-              variant="outlined"
-              size="small"
-              value={filters.supplier_name}
-              onChange={(e) => handleFilterChange('supplier_name', e.target.value)}
-            />
+        <Collapse in={filtersExpanded} timeout="auto" unmountOnExit>
+          <Grid container spacing={2.5} alignItems="flex-end" sx={{ pt: 2 }}>
+            {/* Filter Grid items ... (same as before) */}
+            <Grid item size={{ xs: 12, sm: 6, md: 3, lg: 2 }}>
+                <TextField
+                fullWidth label="Supplier Name" variant="outlined" size="small"
+                value={filters.supplier_name}
+                onChange={(e) => handleFilterChange('supplier_name', e.target.value)}
+                />
+            </Grid>
+            <Grid item size={{ xs: 12, sm: 6, md: 2, lg: 2 }}>
+                <FormControl fullWidth variant="outlined" size="small">
+                <InputLabel>Type</InputLabel> 
+                <Select
+                    value={filters.pricing_type}
+                    onChange={(e) => handleFilterChange('pricing_type', e.target.value as Filters['pricing_type'])}
+                    label="Type"
+                >
+                    <MenuItem value=""><em>All Types</em></MenuItem>
+                    <MenuItem value="Fixed">Fixed</MenuItem>
+                    <MenuItem value="Variable">Variable</MenuItem>
+                </Select>
+                </FormControl>
+            </Grid>
+            <Grid item size={{ xs: 12, sm: 12, md: 4, lg: 3 }} sx={{ px: { xs: 2, sm: 2} }}>
+                <Typography gutterBottom variant="caption" sx={{ display: 'block', color: 'text.secondary', mb: -0.5, ml: 0.5 }}>
+                    Renewable % ({uiRenewableFilter[0]}% - {uiRenewableFilter[1]}%)
+                </Typography>
+                <Slider
+                value={uiRenewableFilter}
+                onChange={handleRenewableSliderChange}
+                valueLabelDisplay="auto"
+                min={0} max={100} size="small"
+                marks={[{value: 0, label: '0%'}, {value: 50, label: '50%'}, {value: 100, label: '100%'}]}
+                sx={{mt: 0.5}}
+                />
+            </Grid>
+            <Grid item size={{ xs: 12, sm: 6, md: 3, lg: 2 }}>
+                <FormControl fullWidth variant="outlined" size="small">
+                <InputLabel>Cancel Fee</InputLabel>
+                <Select
+                    value={filters.has_cancellation_fee}
+                    onChange={(e) => handleFilterChange('has_cancellation_fee', e.target.value as Filters['has_cancellation_fee'])}
+                    label="Cancel Fee"
+                >
+                    <MenuItem value=""><em>Any</em></MenuItem>
+                    <MenuItem value="true">Yes</MenuItem>
+                    <MenuItem value="false">No</MenuItem>
+                </Select>
+                </FormControl>
+            </Grid>
+            <Grid item size={{ xs: 12, sm: 6, md: 12, lg: 3 }}>
+                <FormControl fullWidth variant="outlined" size="small">
+                <InputLabel>Monthly Charge</InputLabel>
+                <Select
+                    value={filters.is_monthly_charge}
+                    onChange={(e) => handleFilterChange('is_monthly_charge', e.target.value as Filters['is_monthly_charge'])}
+                    label="Monthly Charge"
+                >
+                    <MenuItem value=""><em>Any</em></MenuItem>
+                    <MenuItem value="true">Yes</MenuItem>
+                    <MenuItem value="false">No</MenuItem>
+                </Select>
+                </FormControl>
+            </Grid>
           </Grid>
-          <Grid
-						item
-						size={{ xs: 12, sm: 6, md: 2.5, lg: 2}}
-					> {/* Pricing Type */}
-            <FormControl fullWidth variant="outlined" size="small">
-              <InputLabel>Type</InputLabel> 
-              <Select
-                value={filters.pricing_type}
-                onChange={(e) => handleFilterChange('pricing_type', e.target.value as Filters['pricing_type'])}
-                label="Type"
-              >
-                <MenuItem value=""><em>All Types</em></MenuItem>
-                <MenuItem value="Fixed">Fixed</MenuItem>
-                <MenuItem value="Variable">Variable</MenuItem>
-              </Select>
-            </FormControl>
-          </Grid>
-          <Grid
-            item
-						size={{ xs: 12, sm: 6, md: 2.5, lg: 2}}
-			    > {/* Renewable % */}
-            <Typography gutterBottom variant="caption" sx={{ display: 'block', color: 'text.secondary', mb: -0.5 }}>
-                Renewable % ({filters.percent_renewable[0]}% - {filters.percent_renewable[1]}%)
-            </Typography>
-            <Slider
-              value={filters.percent_renewable}
-              onChange={(_, newValue) => handleFilterChange('percent_renewable', newValue as number[])}
-              valueLabelDisplay="auto"
-              min={0}
-              max={100}
-              size="small"
-              marks={[{value: 0, label: '0%'}, {value: 50, label: '50%'}, {value: 100, label: '100%'}]}
-            />
-          </Grid>
-          <Grid
-            item 
-						size={{ xs: 12, sm: 6, md: 2.5, lg: 2}}
-          > {/* Cancellation Fee */}
-            <FormControl fullWidth variant="outlined" size="small">
-              <InputLabel>Cancel Fee</InputLabel> {/* CHANGED */}
-              <Select
-                value={filters.has_cancellation_fee}
-                onChange={(e) => handleFilterChange('has_cancellation_fee', e.target.value as Filters['has_cancellation_fee'])}
-                label="Cancel Fee"
-              >
-                <MenuItem value=""><em>Any</em></MenuItem>
-                <MenuItem value="true">Yes</MenuItem>
-                <MenuItem value="false">No</MenuItem>
-              </Select>
-            </FormControl>
-          </Grid>
-          <Grid
-            item 
-						size={{ xs: 12, sm: 6, md: 2.5, lg: 2}}
-          > 
-             <FormControl fullWidth variant="outlined" size="small">
-              <InputLabel>Mo. Charge</InputLabel> {/* CHANGED */}
-              <Select
-                value={filters.is_monthly_charge}
-                onChange={(e) => handleFilterChange('is_monthly_charge', e.target.value as Filters['is_monthly_charge'])}
-                label="Mo. Charge"
-              >
-                <MenuItem value=""><em>Any</em></MenuItem>
-                <MenuItem value="true">Yes</MenuItem>
-                <MenuItem value="false">No</MenuItem>
-              </Select>
-            </FormControl>
-          </Grid>
-        </Grid>
+        </Collapse>
       </Paper>
 
-      <TableContainer component={Paper} elevation={3}>
-        <Table sx={{ minWidth: 900 }} aria-labelledby="tableTitle" size="medium">
-          <TableHead sx={{ backgroundColor: alpha(theme.palette.primary.light, 0.1)}}>
-            <TableRow>
-              {headCells.map((headCell) => (
-                <TableCell
-                  key={headCell.id}
-                  align={headCell.align || (headCell.numeric ? 'right' : 'left')}
-                  padding="normal"
-                  sortDirection={headCell.sortable && primaryOrderBy === headCell.id ? primaryOrder : false}
-                  sx={{ fontWeight: 'bold', color: 'primary.dark', minWidth: headCell.minWidth }}
-                >
-                  {headCell.sortable ? (
-                    <TableSortLabel
-                      active={primaryOrderBy === headCell.id}
-                      direction={primaryOrderBy === headCell.id ? primaryOrder : 'asc'}
-                      onClick={() => headCell.sortable && handleRequestSort(headCell.id as SortableKey)}
-                    >
-                      {headCell.label}
-                      {primaryOrderBy === headCell.id ? <Box component="span" sx={visuallyHidden}>{primaryOrder === 'desc' ? 'sorted descending' : 'sorted ascending'}</Box> : null}
-                    </TableSortLabel>
-                  ) : (
-                    headCell.label
-                  )}
-                </TableCell>
-              ))}
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {filteredAndSortedPlans.map((plan, index) => (
-              <TableRow
-                hover
-                key={`${plan.supplier_name}-${plan.plan_name}-${index}-${plan.price_per_kwh}`}
-                sx={{ '&:nth-of-type(odd)': { backgroundColor: alpha(theme.palette.action.hover, 0.3) } }}
-              >
-                {headCells.map(cell => (
-                    <TableCell key={cell.id as string} align={cell.align || (cell.numeric ? 'right' : 'left')}>
-                        {cell.render ? cell.render(plan[cell.id as keyof EnergyPlan], plan) : String(plan[cell.id as keyof EnergyPlan] ?? 'N/A')}
-                    </TableCell>
-                ))}
-              </TableRow>
-            ))}
-            {filteredAndSortedPlans.length === 0 && (
-                <TableRow>
-                    <TableCell colSpan={headCells.length} align="center" sx={{py: 5}}>
-                        <Typography variant="subtitle1" color="textSecondary">No plans match your current filter criteria.</Typography>
-                        <Button variant="text" onClick={clearFilters} sx={{mt:1}}>Clear Filters to see all plans</Button>
-                    </TableCell>
-                </TableRow>
-            )}
-          </TableBody>
-        </Table>
-      </TableContainer>
+      <Box>
+        {filteredAndSortedPlans.length === 0 ? (
+          <NoPlansMessage />
+        ) : isMobile ? (
+          <Virtuoso
+            useWindowScroll
+            data={filteredAndSortedPlans}
+            itemContent={(_index, plan) => <MobilePlanCard plan={plan} />}
+            overscan={200}
+          />
+        ) : (
+          <TableVirtuoso
+            style={{ height: 'calc(100vh - 280px)' }}
+            data={filteredAndSortedPlans}
+            components={tableComponents}
+            fixedHeaderContent={fixedHeaderContent}
+            itemContent={rowContent}
+            overscan={10}
+          />
+        )}
+      </Box>
     </Container>
   );
 }
