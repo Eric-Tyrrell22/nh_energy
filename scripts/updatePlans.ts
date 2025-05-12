@@ -1,4 +1,4 @@
-import getSupplierInfo from '../src/api/index';
+import getSupplierInfo from '../data-updater/api/index';
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
@@ -7,7 +7,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 (async() => {
-  const filePath = path.resolve(__dirname, '..', 'data', 'supplier_data.json');
+  const filePath = path.resolve(__dirname, '..', 'frontend', 'public', 'data', 'supplier_data.json');
   const supplierInfo = await getSupplierInfo();
   if (supplierInfo) {
     console.log(JSON.stringify(supplierInfo, null, 2));
