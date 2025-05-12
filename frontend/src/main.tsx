@@ -7,6 +7,8 @@ import { ThemeProvider, createTheme, alpha } from '@mui/material/styles';
 import { BrowserRouter } from 'react-router-dom';
 import CssBaseline from '@mui/material/CssBaseline';
 
+const repositoryName = 'nh_energy';
+
 // More polished theme
 const theme = createTheme({
   palette: {
@@ -89,7 +91,7 @@ const theme = createTheme({
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <BrowserRouter>
+    <BrowserRouter basename={`/${repositoryName}`}> {/* << --- ADD basename PROP */}
       <ThemeProvider theme={theme}> {/* Apply MUI theme globally */}
         <CssBaseline /> {/* MUI's CSS reset */}
         <App />

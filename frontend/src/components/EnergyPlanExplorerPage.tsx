@@ -357,14 +357,20 @@ function EnergyPlanExplorerPage({ providerDataUrl, providerName }: EnergyPlanExp
         </Box>
         <Collapse in={filtersExpanded} timeout="auto" unmountOnExit>
           <Grid container spacing={2.5} alignItems="flex-end" sx={{ pt: 2 }}>
-            <Grid item xs={12} sm={6} md={3} lg={2}>
+            <Grid
+              item 
+              sx={{xs: 12, sm: 6, md: 3, lg: 2}}
+            >
                 <TextField
                 fullWidth label="Supplier Name" variant="outlined" size="small"
                 value={filters.supplier_name}
                 onChange={(e) => handleFilterChange('supplier_name', e.target.value)}
                 />
             </Grid>
-            <Grid item xs={12} sm={6} md={2} lg={2}>
+            <Grid
+              item 
+              size={{xs: 12, sm: 6, md: 3, lg: 2}}
+            >
                 <FormControl fullWidth variant="outlined" size="small">
                 <InputLabel>Type</InputLabel> 
                 <Select
@@ -378,8 +384,12 @@ function EnergyPlanExplorerPage({ providerDataUrl, providerName }: EnergyPlanExp
                 </Select>
                 </FormControl>
             </Grid>
-            <Grid item xs={12} sm={12} md={4} lg={3} sx={{ px: { xs: 2, sm: 2} }}>
-                <Typography gutterBottom variant="caption" sx={{ display: 'block', color: 'text.secondary', mb: -0.5, ml: 0.5 }}>
+            <Grid
+              item 
+              size={{xs: 12, sm: 6, md: 3, lg: 2}}
+              sx={{px: 1}}
+            >
+                <Typography gutterBottom variant="caption" sx={{ display: 'block', color: 'text.secondary', mb: -0.5 }}>
                     Renewable % ({uiRenewableFilter[0]}% - {uiRenewableFilter[1]}%)
                 </Typography>
                 <Slider
@@ -391,7 +401,10 @@ function EnergyPlanExplorerPage({ providerDataUrl, providerName }: EnergyPlanExp
                 sx={{mt: 0.5}}
                 />
             </Grid>
-            <Grid item xs={12} sm={6} md={3} lg={2}>
+            <Grid
+              item 
+              size={{xs: 12, sm: 6, md: 3, lg: 2}}
+            >
                 <FormControl fullWidth variant="outlined" size="small">
                 <InputLabel>Cancel Fee</InputLabel>
                 <Select
@@ -405,7 +418,10 @@ function EnergyPlanExplorerPage({ providerDataUrl, providerName }: EnergyPlanExp
                 </Select>
                 </FormControl>
             </Grid>
-            <Grid item xs={12} sm={6} md={12} lg={3} > {/* Corrected Grid md value from 12 to a more reasonable one if needed, kept 12 as per original structure */}
+            <Grid
+              item 
+              size={{xs: 12, sm: 6, md: 3, lg: 2}}
+            >
                 <FormControl fullWidth variant="outlined" size="small">
                 <InputLabel>Monthly Charge</InputLabel>
                 <Select
