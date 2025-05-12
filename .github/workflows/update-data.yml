@@ -34,3 +34,42 @@ jobs:
           commit_user_name: "GitHub Actions Bot"
           commit_user_email: "actions@github.com"
           branch: main
+  deploy_frontend:
+    runs-on: ubuntu-latest
+    needs: update_data_and_commit # Run this job after the data update job
+    # Only run if the previous job was successful (implied by 'needs')
+    # And optionally, if data actually changed. For now, let's run it always after data update attempt.
+    # if: needs.update_data_and_commit.outputs.data_changed == 'true' # If you were to pass an output
+
+    permissions:
+      contents: write # To push to the gh-pages branch
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        # Ensure you check out the 'main' branch (or your default) again,
+        # as it now contains the updated data/supplier_data.json
+        with:
+          ref: main # Or your default branch
+
+      - name: Set up Node.js for Frontend
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          # Cache npm dependencies for the frontend based on its package-lock.json
+          cache: 'npm'
+          cache-dependency-path: frontend/package-lock.json # Path to frontend's lock file
+
+      - name: Install frontend dependencies
+        working-directory: ./frontend # Important to run npm in the frontend directory
+        run: npm ci
+
+      - name: Build frontend
+        working-directory: ./frontend
+        run: npm run build # This runs 'tsc && vite build' from frontend/package.json
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3 # A popular action for deploying to gh-pages
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./frontend/dist # The directory Vite builds to
