@@ -361,24 +361,24 @@
   },
   {
     "supplier_name": "Town Square Energy",
-    "plan_name": "Power Your Tomorrow Fixed - 8 Green",
-    "price_per_kwh": 0.1621,
-    "last_updated": "2025-05-02T00:00:00.000Z",
+    "plan_name": "Power Your Tomorrow Fixed - 6 Green",
+    "price_per_kwh": 0.1566,
+    "last_updated": "2025-05-23T00:00:00.000Z",
     "pricing_type": "Fixed",
     "is_monthly_charge": false,
     "is_intro_price": false,
     "has_cancellation_fee": true,
     "percent_renewable": 100,
     "link": "http://www.townsquareenergy.com",
-    "rate_is_good_for": "8 months",
+    "rate_is_good_for": "6 months",
     "rate_end": "*Last meter read*",
-    "comments": "8 monthly bill cycles fixed at 16.21 cents/kWh. See full terms in terms of service."
+    "comments": "6 monthly bill cycles fixed at 15.66 cents/kWh. See full terms in terms of service."
   },
   {
     "supplier_name": "Town Square Energy",
     "plan_name": "Power Your Tomorrow Variable - 1",
-    "price_per_kwh": 0.1047,
-    "last_updated": "2025-05-02T00:00:00.000Z",
+    "price_per_kwh": 0.0827,
+    "last_updated": "2025-05-23T00:00:00.000Z",
     "pricing_type": "Variable",
     "is_monthly_charge": false,
     "is_intro_price": false,
@@ -407,8 +407,8 @@
   {
     "supplier_name": "Town Square Energy",
     "plan_name": "Power Your Tomorrow Variable - 1 Green",
-    "price_per_kwh": 0.1147,
-    "last_updated": "2025-05-02T00:00:00.000Z",
+    "price_per_kwh": 0.0927,
+    "last_updated": "2025-05-23T00:00:00.000Z",
     "pricing_type": "Fixed",
     "is_monthly_charge": false,
     "is_intro_price": false,
@@ -421,17 +421,17 @@
   },
   {
     "supplier_name": "Town Square Energy",
-    "plan_name": "Power Your Tomorrow Fixed - 8",
-    "price_per_kwh": 0.1347,
-    "last_updated": "2025-05-02T00:00:00.000Z",
+    "plan_name": "Power Your Today Fixed - 6",
+    "price_per_kwh": 0.1292,
+    "last_updated": "2025-05-23T00:00:00.000Z",
     "pricing_type": "Fixed",
     "is_monthly_charge": false,
     "is_intro_price": false,
     "has_cancellation_fee": true,
     "percent_renewable": 0,
     "link": "http://www.townsquareenergy.com",
-    "rate_is_good_for": "8 months",
+    "rate_is_good_for": "6 months",
     "rate_end": "*Last meter read*",
-    "comments": "8 monthly bill cycles fixed at 13.47 cents/kWh. See full terms in terms of service."
+    "comments": "6 monthly bill cycles fixed at 12.92 cents/kWh. See full terms in terms of service."
   }
 ]
