@@ -1256,7 +1256,7 @@
     "percent_renewable": 50,
     "link": "http://www.xoomenergy.com",
     "rate_is_good_for": "1 months",
-    "rate_end": "June, 2025 *Last meter read*",
+    "rate_end": "*Last meter read*",
     "comments": ""
   },
   {
@@ -1271,7 +1271,7 @@
     "percent_renewable": 0,
     "link": "http://www.xoomenergy.com",
     "rate_is_good_for": "24 months",
-    "rate_end": "June, 2025 *Last meter read*",
+    "rate_end": "*Last meter read*",
     "comments": ""
   },
   {
@@ -1286,7 +1286,7 @@
     "percent_renewable": 0,
     "link": "http://www.xoomenergy.com",
     "rate_is_good_for": "12 months",
-    "rate_end": "June, 2025 *Last meter read*",
+    "rate_end": "*Last meter read*",
     "comments": ""
   },
   {
@@ -1301,7 +1301,7 @@
     "percent_renewable": 0,
     "link": "http://www.xoomenergy.com",
     "rate_is_good_for": "12 months",
-    "rate_end": "June, 2025 *Last meter read*",
+    "rate_end": "*Last meter read*",
     "comments": "When you enroll on RescueLock 12, 5% of your monthly energy charges will be donated to PetSmart Charities!"
   },
   {
@@ -1316,7 +1316,7 @@
     "percent_renewable": 50,
     "link": "http://www.xoomenergy.com",
     "rate_is_good_for": "12 months",
-    "rate_end": "June, 2025 *Last meter read*",
+    "rate_end": "*Last meter read*",
     "comments": ""
   }
 ]
