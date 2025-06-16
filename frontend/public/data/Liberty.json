@@ -150,19 +150,19 @@
     "comments": "Are you looking for a fixed rate energy plan? This plan is for you. Enjoy 12 months of a fixed rate with no monthly service fee and a $100 early termination fee."
   },
   {
-    "supplier_name": "ENH Power",
-    "plan_name": "Easy Choice 3 - Residential",
-    "price_per_kwh": 0.0669,
-    "last_updated": "2025-05-06T00:00:00.000Z",
+    "supplier_name": "North American Power & Gas, LLC",
+    "plan_name": "12 Month Standard Fixed",
+    "price_per_kwh": 0.1259,
+    "last_updated": "2025-05-19T00:00:00.000Z",
     "pricing_type": "Fixed",
     "is_monthly_charge": false,
     "is_intro_price": false,
-    "has_cancellation_fee": false,
+    "has_cancellation_fee": true,
     "percent_renewable": 0,
-    "link": "http://providerpower.com/nh/",
-    "rate_is_good_for": "3 months",
+    "link": "http://www.napower.com",
+    "rate_is_good_for": "12 months",
     "rate_end": "*Last meter read*",
-    "comments": "An easy choice for new customers to lock in a fixed rate for 3 months with no monthly service fee or early termination fees."
+    "comments": "Early termination fee: $10.00 for each month remaining in your contract."
   },
   {
     "supplier_name": "North American Power & Gas, LLC",
@@ -176,21 +176,6 @@
     "percent_renewable": 100,
     "link": "http://www.napower.com",
     "rate_is_good_for": "14 months",
-    "rate_end": "*Last meter read*",
-    "comments": "Early termination fee: $10.00 for each month remaining in your contract."
-  },
-  {
-    "supplier_name": "North American Power & Gas, LLC",
-    "plan_name": "12 Month Standard Fixed",
-    "price_per_kwh": 0.1259,
-    "last_updated": "2025-05-19T00:00:00.000Z",
-    "pricing_type": "Fixed",
-    "is_monthly_charge": false,
-    "is_intro_price": false,
-    "has_cancellation_fee": true,
-    "percent_renewable": 0,
-    "link": "http://www.napower.com",
-    "rate_is_good_for": "12 months",
     "rate_end": "*Last meter read*",
     "comments": "Early termination fee: $10.00 for each month remaining in your contract."
   },
