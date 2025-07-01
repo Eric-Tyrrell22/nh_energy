@@ -133,20 +133,5 @@
     "rate_is_good_for": "12 months",
     "rate_end": "*Last meter read*",
     "comments": "Are you looking for a fixed rate energy plan? This plan is for you. Enjoy 12 months of a fixed rate with no monthly service fee and a $100 early termination fee."
-  },
-  {
-    "supplier_name": "ENH Power",
-    "plan_name": "Easy Choice 3 - Residential",
-    "price_per_kwh": 0.0699,
-    "last_updated": "2025-06-17T00:00:00.000Z",
-    "pricing_type": "Fixed",
-    "is_monthly_charge": false,
-    "is_intro_price": false,
-    "has_cancellation_fee": false,
-    "percent_renewable": 0,
-    "link": "http://providerpower.com/nh/",
-    "rate_is_good_for": "3 months",
-    "rate_end": "*Last meter read*",
-    "comments": "An easy choice for new customers to lock in a fixed rate for 3 months with no monthly service fee or early termination fees."
   }
 ]
