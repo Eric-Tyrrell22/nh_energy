@@ -872,8 +872,8 @@
   {
     "supplier_name": "North American Power & Gas, LLC",
     "plan_name": "14 Month Renewable Fixed",
-    "price_per_kwh": 0.1374,
-    "last_updated": "2025-06-16T00:00:00.000Z",
+    "price_per_kwh": 0.1394,
+    "last_updated": "2025-07-02T00:00:00.000Z",
     "pricing_type": "Fixed",
     "is_monthly_charge": false,
     "is_intro_price": false,
@@ -887,8 +887,8 @@
   {
     "supplier_name": "North American Power & Gas, LLC",
     "plan_name": "14 Month Standard Fixed",
-    "price_per_kwh": 0.1279,
-    "last_updated": "2025-06-16T00:00:00.000Z",
+    "price_per_kwh": 0.1299,
+    "last_updated": "2025-07-02T00:00:00.000Z",
     "pricing_type": "Fixed",
     "is_monthly_charge": false,
     "is_intro_price": false,
@@ -902,8 +902,8 @@
   {
     "supplier_name": "North American Power & Gas, LLC",
     "plan_name": "12 Month Standard Fixed",
-    "price_per_kwh": 0.1259,
-    "last_updated": "2025-06-16T00:00:00.000Z",
+    "price_per_kwh": 0.1279,
+    "last_updated": "2025-07-02T00:00:00.000Z",
     "pricing_type": "Fixed",
     "is_monthly_charge": false,
     "is_intro_price": false,
