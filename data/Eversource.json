@@ -1082,8 +1082,8 @@
   {
     "supplier_name": "Think Energy",
     "plan_name": "Think Basic 4",
-    "price_per_kwh": 0.089,
-    "last_updated": "2025-07-09T00:00:00.000Z",
+    "price_per_kwh": 0.099,
+    "last_updated": "2025-07-23T00:00:00.000Z",
     "pricing_type": "Fixed",
     "is_monthly_charge": false,
     "is_intro_price": false,
