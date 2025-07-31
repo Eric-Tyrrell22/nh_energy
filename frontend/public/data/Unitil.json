@@ -287,17 +287,17 @@
   {
     "supplier_name": "SmartEnergy",
     "plan_name": "SmartEnergy -  Web Only Rate",
-    "price_per_kwh": 0.1267,
-    "last_updated": "2025-07-15T00:00:00.000Z",
+    "price_per_kwh": 0.098,
+    "last_updated": "2025-07-30T00:00:00.000Z",
     "pricing_type": "Fixed",
     "is_monthly_charge": false,
     "is_intro_price": false,
     "has_cancellation_fee": false,
     "percent_renewable": 100,
     "link": "http://account.smartenergy.com/new-hampshire?utm_source=PUC_Site_NH&utm_medium=referral&utm_campaign=exclusive_online_rate",
-    "rate_is_good_for": "6 months",
+    "rate_is_good_for": "4 months",
     "rate_end": "*Last meter read*",
-    "comments": "Enjoy our fixed rate for 6 months!"
+    "comments": "Enjoy our fixed rate for 4 months!"
   },
   {
     "supplier_name": "Think Energy",
