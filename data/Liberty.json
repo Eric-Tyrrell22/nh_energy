@@ -61,21 +61,6 @@
   },
   {
     "supplier_name": "Community Power Coalition of New Hampshire",
-    "plan_name": "Enfield Local - Residential",
-    "price_per_kwh": 0.13532,
-    "last_updated": "2025-07-25T00:00:00.000Z",
-    "pricing_type": "Fixed",
-    "is_monthly_charge": false,
-    "is_intro_price": false,
-    "has_cancellation_fee": false,
-    "percent_renewable": 25.2,
-    "link": "http://www.CommunityPowerNH.gov",
-    "rate_is_good_for": "6 months",
-    "rate_end": "January, 2026 *Last meter read*",
-    "comments": "Visit communitypowernh.gov/enfield to select your local power option."
-  },
-  {
-    "supplier_name": "Community Power Coalition of New Hampshire",
     "plan_name": "Granite Basic",
     "price_per_kwh": 0.13332,
     "last_updated": "2025-07-25T00:00:00.000Z",
@@ -103,6 +88,21 @@
     "rate_is_good_for": "5 months",
     "rate_end": "January, 2026 *Last meter read*",
     "comments": "visit www.communitypowernh.gov to see if city or town has implemented Community Power with the Coalition"
+  },
+  {
+    "supplier_name": "Community Power Coalition of New Hampshire",
+    "plan_name": "Enfield Local - Residential",
+    "price_per_kwh": 0.13532,
+    "last_updated": "2025-07-25T00:00:00.000Z",
+    "pricing_type": "Fixed",
+    "is_monthly_charge": false,
+    "is_intro_price": false,
+    "has_cancellation_fee": false,
+    "percent_renewable": 25.2,
+    "link": "http://www.CommunityPowerNH.gov",
+    "rate_is_good_for": "6 months",
+    "rate_end": "January, 2026 *Last meter read*",
+    "comments": "Visit communitypowernh.gov/enfield to select your local power option."
   },
   {
     "supplier_name": "Community Power Coalition of New Hampshire",
@@ -163,50 +163,5 @@
     "rate_is_good_for": "12 months",
     "rate_end": "*Last meter read*",
     "comments": "Are you looking for a fixed rate energy plan? This plan is for you. Enjoy 12 months of a fixed rate with no monthly service fee and a $100 early termination fee."
-  },
-  {
-    "supplier_name": "North American Power & Gas, LLC",
-    "plan_name": "12 Month Standard Fixed",
-    "price_per_kwh": 0.1279,
-    "last_updated": "2025-06-30T00:00:00.000Z",
-    "pricing_type": "Fixed",
-    "is_monthly_charge": false,
-    "is_intro_price": false,
-    "has_cancellation_fee": true,
-    "percent_renewable": 0,
-    "link": "http://www.napower.com",
-    "rate_is_good_for": "12 months",
-    "rate_end": "*Last meter read*",
-    "comments": "Early termination fee: $10.00 for each month remaining in your contract."
-  },
-  {
-    "supplier_name": "North American Power & Gas, LLC",
-    "plan_name": "14 Month Renewable Fixed",
-    "price_per_kwh": 0.1394,
-    "last_updated": "2025-06-30T00:00:00.000Z",
-    "pricing_type": "Fixed",
-    "is_monthly_charge": false,
-    "is_intro_price": false,
-    "has_cancellation_fee": true,
-    "percent_renewable": 100,
-    "link": "http://www.napower.com",
-    "rate_is_good_for": "14 months",
-    "rate_end": "*Last meter read*",
-    "comments": "Early termination fee: $10.00 for each month remaining in your contract."
-  },
-  {
-    "supplier_name": "North American Power & Gas, LLC",
-    "plan_name": "14 Month Standard Fixed",
-    "price_per_kwh": 0.1299,
-    "last_updated": "2025-06-30T00:00:00.000Z",
-    "pricing_type": "Fixed",
-    "is_monthly_charge": false,
-    "is_intro_price": false,
-    "has_cancellation_fee": true,
-    "percent_renewable": 0,
-    "link": "http://www.napower.com",
-    "rate_is_good_for": "14 months",
-    "rate_end": "*Last meter read*",
-    "comments": "Early termination fee: $10.00 for each month remaining in your contract."
   }
 ]
