@@ -270,36 +270,6 @@
     "comments": "Early termination fee: $10.00 for each month remaining in your contract."
   },
   {
-    "supplier_name": "North American Power & Gas, LLC",
-    "plan_name": "14 Month Renewable Fixed",
-    "price_per_kwh": 0.1394,
-    "last_updated": "2025-06-30T00:00:00.000Z",
-    "pricing_type": "Fixed",
-    "is_monthly_charge": false,
-    "is_intro_price": false,
-    "has_cancellation_fee": true,
-    "percent_renewable": 100,
-    "link": "http://www.napower.com",
-    "rate_is_good_for": "14 months",
-    "rate_end": "*Last meter read*",
-    "comments": "Early termination fee: $10.00 for each month remaining in your contract."
-  },
-  {
-    "supplier_name": "North American Power & Gas, LLC",
-    "plan_name": "12 Month Standard Fixed",
-    "price_per_kwh": 0.1279,
-    "last_updated": "2025-06-30T00:00:00.000Z",
-    "pricing_type": "Fixed",
-    "is_monthly_charge": false,
-    "is_intro_price": false,
-    "has_cancellation_fee": true,
-    "percent_renewable": 0,
-    "link": "http://www.napower.com",
-    "rate_is_good_for": "12 months",
-    "rate_end": "*Last meter read*",
-    "comments": "Early termination fee: $10.00 for each month remaining in your contract."
-  },
-  {
     "supplier_name": "SmartEnergy",
     "plan_name": "SmartEnergy -  Web Only Rate",
     "price_per_kwh": 0.11,
