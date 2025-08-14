@@ -31,21 +31,6 @@
   },
   {
     "supplier_name": "Ambit Energy",
-    "plan_name": "Winter Break 12",
-    "price_per_kwh": 0.19,
-    "last_updated": "2025-08-01T00:00:00.000Z",
-    "pricing_type": "Fixed",
-    "is_monthly_charge": false,
-    "is_intro_price": false,
-    "has_cancellation_fee": false,
-    "percent_renewable": 0,
-    "link": "http://ww2.ambitenergy.com/",
-    "rate_is_good_for": "12 months",
-    "rate_end": "*Last meter read*",
-    "comments": "As temperatures drop, your savings will rise. Get 50% off your energy charges on bill cycles beginning November 1st through the end of February. Only available to new Ambit customers"
-  },
-  {
-    "supplier_name": "Ambit Energy",
     "plan_name": "Ultimate Perks 12",
     "price_per_kwh": 0.1475,
     "last_updated": "2025-08-01T00:00:00.000Z",
@@ -60,34 +45,19 @@
     "comments": "Only available to new Ambit customers"
   },
   {
-    "supplier_name": "Community Power Coalition of New Hampshire",
-    "plan_name": "Granite Plus - Residential (Fixed Rate)",
-    "price_per_kwh": 0.14429,
-    "last_updated": "2025-07-25T00:00:00.000Z",
+    "supplier_name": "Ambit Energy",
+    "plan_name": "Winter Break 12",
+    "price_per_kwh": 0.19,
+    "last_updated": "2025-08-01T00:00:00.000Z",
     "pricing_type": "Fixed",
     "is_monthly_charge": false,
     "is_intro_price": false,
     "has_cancellation_fee": false,
-    "percent_renewable": 33,
-    "link": "http://www.CommunityPowerNH.gov",
-    "rate_is_good_for": "6 months",
-    "rate_end": "January, 2026 *Last meter read*",
-    "comments": "visit www.communitypowernh.gov to see if city or town has implemented Community Power with the Coalition"
-  },
-  {
-    "supplier_name": "Community Power Coalition of New Hampshire",
-    "plan_name": "Canterbury Basic - Residential",
-    "price_per_kwh": 0.13929,
-    "last_updated": "2025-07-25T00:00:00.000Z",
-    "pricing_type": "Fixed",
-    "is_monthly_charge": false,
-    "is_intro_price": false,
-    "has_cancellation_fee": false,
-    "percent_renewable": 25.2,
-    "link": "http://www.CommunityPowerNH.gov",
-    "rate_is_good_for": "6 months",
-    "rate_end": "January, 2026 *Last meter read*",
-    "comments": "This rate is available to Canterbury Community Power Customers. www.communitypowernh.gov/canterbury"
+    "percent_renewable": 0,
+    "link": "http://ww2.ambitenergy.com/",
+    "rate_is_good_for": "12 months",
+    "rate_end": "*Last meter read*",
+    "comments": "As temperatures drop, your savings will rise. Get 50% off your energy charges on bill cycles beginning November 1st through the end of February. Only available to new Ambit customers"
   },
   {
     "supplier_name": "Community Power Coalition of New Hampshire",
@@ -133,6 +103,36 @@
     "rate_is_good_for": "6 months",
     "rate_end": "January, 2026 *Last meter read*",
     "comments": "visit www.communitypowernh.gov to see if city or town has implemented Community Power with the Coalition"
+  },
+  {
+    "supplier_name": "Community Power Coalition of New Hampshire",
+    "plan_name": "Granite Plus - Residential (Fixed Rate)",
+    "price_per_kwh": 0.14429,
+    "last_updated": "2025-07-25T00:00:00.000Z",
+    "pricing_type": "Fixed",
+    "is_monthly_charge": false,
+    "is_intro_price": false,
+    "has_cancellation_fee": false,
+    "percent_renewable": 33,
+    "link": "http://www.CommunityPowerNH.gov",
+    "rate_is_good_for": "6 months",
+    "rate_end": "January, 2026 *Last meter read*",
+    "comments": "visit www.communitypowernh.gov to see if city or town has implemented Community Power with the Coalition"
+  },
+  {
+    "supplier_name": "Community Power Coalition of New Hampshire",
+    "plan_name": "Canterbury Basic - Residential",
+    "price_per_kwh": 0.13929,
+    "last_updated": "2025-07-25T00:00:00.000Z",
+    "pricing_type": "Fixed",
+    "is_monthly_charge": false,
+    "is_intro_price": false,
+    "has_cancellation_fee": false,
+    "percent_renewable": 25.2,
+    "link": "http://www.CommunityPowerNH.gov",
+    "rate_is_good_for": "6 months",
+    "rate_end": "January, 2026 *Last meter read*",
+    "comments": "This rate is available to Canterbury Community Power Customers. www.communitypowernh.gov/canterbury"
   },
   {
     "supplier_name": "Community Power Coalition of New Hampshire",
@@ -211,18 +211,18 @@
   },
   {
     "supplier_name": "Hampton Community Power Aggregation",
-    "plan_name": "Standard",
-    "price_per_kwh": 0.09425,
+    "plan_name": "Optional Green 100",
+    "price_per_kwh": 0.12918,
     "last_updated": "2025-08-11T00:00:00.000Z",
     "pricing_type": "Fixed",
     "is_monthly_charge": false,
     "is_intro_price": false,
     "has_cancellation_fee": false,
-    "percent_renewable": 24.3,
+    "percent_renewable": 100,
     "link": "http://www.colonialpowergroupnh.com/hampton/",
     "rate_is_good_for": "3 months",
     "rate_end": "November, 2025 *Last meter read*",
-    "comments": "Available only to residential customers located in Hampton, NH;\nRenewable energy content meets NH RPS = 24.3%"
+    "comments": "Available only to residential customers located in Hampton, NH;\nRenewable Energy Content = 100% NH Class I RECs (including 14.1% Class I RECs included in NH RPS)"
   },
   {
     "supplier_name": "Hampton Community Power Aggregation",
@@ -241,18 +241,18 @@
   },
   {
     "supplier_name": "Hampton Community Power Aggregation",
-    "plan_name": "Optional Green 100",
-    "price_per_kwh": 0.12918,
+    "plan_name": "Standard",
+    "price_per_kwh": 0.09425,
     "last_updated": "2025-08-11T00:00:00.000Z",
     "pricing_type": "Fixed",
     "is_monthly_charge": false,
     "is_intro_price": false,
     "has_cancellation_fee": false,
-    "percent_renewable": 100,
+    "percent_renewable": 24.3,
     "link": "http://www.colonialpowergroupnh.com/hampton/",
     "rate_is_good_for": "3 months",
     "rate_end": "November, 2025 *Last meter read*",
-    "comments": "Available only to residential customers located in Hampton, NH;\nRenewable Energy Content = 100% NH Class I RECs (including 14.1% Class I RECs included in NH RPS)"
+    "comments": "Available only to residential customers located in Hampton, NH;\nRenewable energy content meets NH RPS = 24.3%"
   },
   {
     "supplier_name": "North American Power & Gas, LLC",
@@ -316,18 +316,18 @@
   },
   {
     "supplier_name": "Think Energy",
-    "plan_name": "Think Clean 36",
-    "price_per_kwh": 0.125,
-    "last_updated": "2025-08-01T00:00:00.000Z",
+    "plan_name": "Think Clean 12",
+    "price_per_kwh": 0.119,
+    "last_updated": "2025-07-31T00:00:00.000Z",
     "pricing_type": "Fixed",
     "is_monthly_charge": false,
     "is_intro_price": false,
     "has_cancellation_fee": false,
     "percent_renewable": 100,
     "link": "http://www.thinkenergy.com/?utm_source=rateboard&utm_medium=referral&utm_campaign=newhampshire",
-    "rate_is_good_for": "36 months",
+    "rate_is_good_for": "12 months",
     "rate_end": "*Last meter read*",
-    "comments": "Think Clean 36 Sign up and receive a $100 gift card. New customers only. Eligibility rules apply. See www.thinkenergy.com/gift-card-promotion for more information."
+    "comments": "Think Clean 12 Sign up and receive a $100 gift card. New customers only. Eligibility rules apply. See www.thinkenergy.com/gift-card-promotion for more information."
   },
   {
     "supplier_name": "Think Energy",
@@ -346,23 +346,23 @@
   },
   {
     "supplier_name": "Think Energy",
-    "plan_name": "Think Clean 12",
-    "price_per_kwh": 0.119,
-    "last_updated": "2025-07-31T00:00:00.000Z",
+    "plan_name": "Think Clean 36",
+    "price_per_kwh": 0.125,
+    "last_updated": "2025-08-01T00:00:00.000Z",
     "pricing_type": "Fixed",
     "is_monthly_charge": false,
     "is_intro_price": false,
     "has_cancellation_fee": false,
     "percent_renewable": 100,
     "link": "http://www.thinkenergy.com/?utm_source=rateboard&utm_medium=referral&utm_campaign=newhampshire",
-    "rate_is_good_for": "12 months",
+    "rate_is_good_for": "36 months",
     "rate_end": "*Last meter read*",
-    "comments": "Think Clean 12 Sign up and receive a $100 gift card. New customers only. Eligibility rules apply. See www.thinkenergy.com/gift-card-promotion for more information."
+    "comments": "Think Clean 36 Sign up and receive a $100 gift card. New customers only. Eligibility rules apply. See www.thinkenergy.com/gift-card-promotion for more information."
   },
   {
     "supplier_name": "Town Square Energy",
-    "plan_name": "Power Your Today Fixed - 4",
-    "price_per_kwh": 0.0987,
+    "plan_name": "Power Your Tomorrow Fixed - 12",
+    "price_per_kwh": 0.1177,
     "last_updated": "2025-07-31T00:00:00.000Z",
     "pricing_type": "Fixed",
     "is_monthly_charge": false,
@@ -370,9 +370,24 @@
     "has_cancellation_fee": false,
     "percent_renewable": 0,
     "link": "http://www.townsquareenergy.com",
-    "rate_is_good_for": "4 months",
+    "rate_is_good_for": "12 months",
     "rate_end": "*Last meter read*",
-    "comments": "4 monthly bill cycles fixed at 9.87 cents/kWh. See full terms in terms of service"
+    "comments": "12 monthly bill cycles fixed at 11.77 cents/kWh. See full terms in terms of service"
+  },
+  {
+    "supplier_name": "Town Square Energy",
+    "plan_name": "Power Your Tomorrow Fixed - 15",
+    "price_per_kwh": 0.1157,
+    "last_updated": "2025-08-13T00:00:00.000Z",
+    "pricing_type": "Fixed",
+    "is_monthly_charge": false,
+    "is_intro_price": false,
+    "has_cancellation_fee": false,
+    "percent_renewable": 0,
+    "link": "http://www.townsquareenergy.com",
+    "rate_is_good_for": "15 months",
+    "rate_end": "*Last meter read*",
+    "comments": "15 monthly bill cycles fixed at 11.57 cents/kWh. See full terms in terms of service."
   },
   {
     "supplier_name": "Town Square Energy",
@@ -388,21 +403,6 @@
     "rate_is_good_for": "4 months",
     "rate_end": "*Last meter read*",
     "comments": "4 monthly bill cycles fixed at 12.28 cents/kWh. See full terms in terms of service."
-  },
-  {
-    "supplier_name": "Town Square Energy",
-    "plan_name": "Power Your Tomorrow Variable - 1 Green",
-    "price_per_kwh": 0.0927,
-    "last_updated": "2025-07-25T00:00:00.000Z",
-    "pricing_type": "Fixed",
-    "is_monthly_charge": false,
-    "is_intro_price": false,
-    "has_cancellation_fee": false,
-    "percent_renewable": 100,
-    "link": "http://www.townsquareenergy.com",
-    "rate_is_good_for": "1 months",
-    "rate_end": "*Last meter read*",
-    "comments": "You will be given the opportunity to earn a rebate equal to 10% of what you paid toward the electricity supply charges during your first ten full billing cycles."
   },
   {
     "supplier_name": "Town Square Energy",
@@ -451,17 +451,32 @@
   },
   {
     "supplier_name": "Town Square Energy",
-    "plan_name": "Power Your Tomorrow Fixed - 12",
-    "price_per_kwh": 0.1177,
-    "last_updated": "2025-07-31T00:00:00.000Z",
+    "plan_name": "Power Your Tomorrow Fixed - 3",
+    "price_per_kwh": 0.0927,
+    "last_updated": "2025-08-13T00:00:00.000Z",
     "pricing_type": "Fixed",
     "is_monthly_charge": false,
     "is_intro_price": false,
     "has_cancellation_fee": false,
     "percent_renewable": 0,
     "link": "http://www.townsquareenergy.com",
-    "rate_is_good_for": "12 months",
+    "rate_is_good_for": "3 months",
     "rate_end": "*Last meter read*",
-    "comments": "12 monthly bill cycles fixed at 11.77 cents/kWh. See full terms in terms of service"
+    "comments": "3 monthly bill cycles fixed at 9.27 cents/kWh. See full terms in terms of service"
+  },
+  {
+    "supplier_name": "Town Square Energy",
+    "plan_name": "Power Your Tomorrow Variable - 1 Green",
+    "price_per_kwh": 0.0927,
+    "last_updated": "2025-07-25T00:00:00.000Z",
+    "pricing_type": "Fixed",
+    "is_monthly_charge": false,
+    "is_intro_price": false,
+    "has_cancellation_fee": false,
+    "percent_renewable": 100,
+    "link": "http://www.townsquareenergy.com",
+    "rate_is_good_for": "1 months",
+    "rate_end": "*Last meter read*",
+    "comments": "You will be given the opportunity to earn a rebate equal to 10% of what you paid toward the electricity supply charges during your first ten full billing cycles."
   }
 ]
