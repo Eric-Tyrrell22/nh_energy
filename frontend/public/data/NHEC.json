@@ -123,7 +123,7 @@
     "supplier_name": "ENH Power",
     "plan_name": "Simple Power 12 - Residential",
     "price_per_kwh": 0.1149,
-    "last_updated": "2025-10-07T00:00:00.000Z",
+    "last_updated": "2025-10-14T00:00:00.000Z",
     "pricing_type": "Fixed",
     "is_monthly_charge": false,
     "is_intro_price": false,
@@ -133,20 +133,5 @@
     "rate_is_good_for": "12 months",
     "rate_end": "*Last meter read*",
     "comments": "Enjoy 12 months of a fixed rate with no MSF and a $100 ETF. Only new customers are eligible to sign up for this plan online. For existing customers with ENH Power, please call (844) 821-8030 to renew."
-  },
-  {
-    "supplier_name": "ENH Power",
-    "plan_name": "Easy Choice 3 - Residential",
-    "price_per_kwh": 0.1019,
-    "last_updated": "2025-10-07T00:00:00.000Z",
-    "pricing_type": "Fixed",
-    "is_monthly_charge": false,
-    "is_intro_price": false,
-    "has_cancellation_fee": false,
-    "percent_renewable": 0,
-    "link": "http://www.providerpower.com/nh/",
-    "rate_is_good_for": "3 months",
-    "rate_end": "*Last meter read*",
-    "comments": "Enjoy 3 months of a fixed rate with no MSF and no ETF. Only new customers are eligible to sign up for this plan online. For existing customers with ENH Power, please call (844) 821-8030 to renew."
   }
 ]
