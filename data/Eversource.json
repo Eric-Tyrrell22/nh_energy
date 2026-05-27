@@ -136,8 +136,8 @@
   },
   {
     "supplier_name": "Direct Energy Services, LLC",
-    "plan_name": "Live Brighter 23",
-    "price_per_kwh": 0.1429,
+    "plan_name": "Live Brighter AE 13",
+    "price_per_kwh": 0.1349,
     "last_updated": "2026-05-05T00:00:00.000Z",
     "pricing_type": "Fixed",
     "is_monthly_charge": false,
@@ -145,7 +145,7 @@
     "has_cancellation_fee": false,
     "percent_renewable": 0,
     "link": "http://shop.directenergy.com/usn/product-chart/?msid=6338",
-    "rate_is_good_for": "23 months",
+    "rate_is_good_for": "13 months",
     "rate_end": "*Last meter read*",
     "comments": "Rate plan is available for new customers only."
   },
@@ -166,21 +166,6 @@
   },
   {
     "supplier_name": "Direct Energy Services, LLC",
-    "plan_name": "Live Brighter AE 13",
-    "price_per_kwh": 0.1349,
-    "last_updated": "2026-05-05T00:00:00.000Z",
-    "pricing_type": "Fixed",
-    "is_monthly_charge": false,
-    "is_intro_price": false,
-    "has_cancellation_fee": false,
-    "percent_renewable": 0,
-    "link": "http://shop.directenergy.com/usn/product-chart/?msid=6338",
-    "rate_is_good_for": "13 months",
-    "rate_end": "*Last meter read*",
-    "comments": "Rate plan is available for new customers only."
-  },
-  {
-    "supplier_name": "Direct Energy Services, LLC",
     "plan_name": "Live Brighter TO 9",
     "price_per_kwh": 0.1469,
     "last_updated": "2026-05-05T00:00:00.000Z",
@@ -193,6 +178,21 @@
     "rate_is_good_for": "9 months",
     "rate_end": "*Last meter read*",
     "comments": "Green Energy. Rate plan is available for new customers only."
+  },
+  {
+    "supplier_name": "Direct Energy Services, LLC",
+    "plan_name": "Live Brighter 23",
+    "price_per_kwh": 0.1429,
+    "last_updated": "2026-05-05T00:00:00.000Z",
+    "pricing_type": "Fixed",
+    "is_monthly_charge": false,
+    "is_intro_price": false,
+    "has_cancellation_fee": false,
+    "percent_renewable": 0,
+    "link": "http://shop.directenergy.com/usn/product-chart/?msid=6338",
+    "rate_is_good_for": "23 months",
+    "rate_end": "*Last meter read*",
+    "comments": "Rate plan is available for new customers only."
   },
   {
     "supplier_name": "Direct Energy Services, LLC",
@@ -228,7 +228,7 @@
     "supplier_name": "ENH Power",
     "plan_name": "Easy Choice 3 - Residential",
     "price_per_kwh": 0.1129,
-    "last_updated": "2026-05-12T00:00:00.000Z",
+    "last_updated": "2026-05-19T00:00:00.000Z",
     "pricing_type": "Fixed",
     "is_monthly_charge": false,
     "is_intro_price": false,
@@ -243,7 +243,7 @@
     "supplier_name": "ENH Power",
     "plan_name": "Simple Power 12 - Residential",
     "price_per_kwh": 0.1429,
-    "last_updated": "2026-05-12T00:00:00.000Z",
+    "last_updated": "2026-05-19T00:00:00.000Z",
     "pricing_type": "Fixed",
     "is_monthly_charge": false,
     "is_intro_price": false,
@@ -253,21 +253,6 @@
     "rate_is_good_for": "12 months",
     "rate_end": "*Last meter read*",
     "comments": "Enjoy 12 months of a fixed rate with no MSF and a 100 dollar ETF. Only new customers are eligible to sign up for this plan online. For existing customers with ENH, please call (844) 821-8030 to renew."
-  },
-  {
-    "supplier_name": "North American Power & Gas, LLC",
-    "plan_name": "14 Month Standard Fixed",
-    "price_per_kwh": 0.1359,
-    "last_updated": "2026-05-06T00:00:00.000Z",
-    "pricing_type": "Fixed",
-    "is_monthly_charge": false,
-    "is_intro_price": false,
-    "has_cancellation_fee": true,
-    "percent_renewable": 0,
-    "link": "http://www.napower.com",
-    "rate_is_good_for": "14 months",
-    "rate_end": "*Last meter read*",
-    "comments": "Early termination fee: 10.00 dollars for each month remaining in your contract."
   },
   {
     "supplier_name": "North American Power & Gas, LLC",
@@ -281,6 +266,21 @@
     "percent_renewable": 0,
     "link": "http://www.napower.com",
     "rate_is_good_for": "16 months",
+    "rate_end": "*Last meter read*",
+    "comments": "Early termination fee: 10.00 dollars for each month remaining in your contract."
+  },
+  {
+    "supplier_name": "North American Power & Gas, LLC",
+    "plan_name": "14 Month Standard Fixed",
+    "price_per_kwh": 0.1359,
+    "last_updated": "2026-05-06T00:00:00.000Z",
+    "pricing_type": "Fixed",
+    "is_monthly_charge": false,
+    "is_intro_price": false,
+    "has_cancellation_fee": true,
+    "percent_renewable": 0,
+    "link": "http://www.napower.com",
+    "rate_is_good_for": "14 months",
     "rate_end": "*Last meter read*",
     "comments": "Early termination fee: 10.00 dollars for each month remaining in your contract."
   },
@@ -328,21 +328,6 @@
     "rate_is_good_for": "24 months",
     "rate_end": "*Last meter read*",
     "comments": "Think Clean 24 Sign up and receive a 100 gift card. New customers only. Eligibility rules apply. See www.thinkenergy.com/gift-card-promotion for more information."
-  },
-  {
-    "supplier_name": "Think Energy",
-    "plan_name": "Think Basic 5",
-    "price_per_kwh": 0.1,
-    "last_updated": "2026-05-12T00:00:00.000Z",
-    "pricing_type": "Fixed",
-    "is_monthly_charge": false,
-    "is_intro_price": false,
-    "has_cancellation_fee": false,
-    "percent_renewable": 0,
-    "link": "http://www.thinkenergy.com/?utm_source=rateboard&utm_medium=referral&utm_campaign=newhampshire",
-    "rate_is_good_for": "5 months",
-    "rate_end": "*Last meter read*",
-    "comments": ""
   },
   {
     "supplier_name": "Town Square Energy",
