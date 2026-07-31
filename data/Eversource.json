@@ -288,7 +288,7 @@
     "supplier_name": "SmartEnergy",
     "plan_name": "SmartEnergy -  Web Only Rate",
     "price_per_kwh": 0.159,
-    "last_updated": "2026-07-13T00:00:00.000Z",
+    "last_updated": "2026-07-30T00:00:00.000Z",
     "pricing_type": "Fixed",
     "is_monthly_charge": false,
     "is_intro_price": false,
@@ -302,8 +302,8 @@
   {
     "supplier_name": "SmartEnergy",
     "plan_name": "SmartEnergy -  $100 Prepaid Card",
-    "price_per_kwh": 0.181,
-    "last_updated": "2026-06-23T00:00:00.000Z",
+    "price_per_kwh": 0.224,
+    "last_updated": "2026-07-30T00:00:00.000Z",
     "pricing_type": "Fixed",
     "is_monthly_charge": false,
     "is_intro_price": false,
@@ -361,18 +361,18 @@
   },
   {
     "supplier_name": "Town Square Energy",
-    "plan_name": "Power Your Tomorrow Fixed - 18",
-    "price_per_kwh": 0.1497,
-    "last_updated": "2026-07-27T00:00:00.000Z",
+    "plan_name": "Power Your Tomorrow Fixed - 16",
+    "price_per_kwh": 0.1517,
+    "last_updated": "2026-07-29T00:00:00.000Z",
     "pricing_type": "Fixed",
     "is_monthly_charge": false,
     "is_intro_price": false,
     "has_cancellation_fee": false,
     "percent_renewable": 0,
     "link": "http://www.townsquareenergy.com",
-    "rate_is_good_for": "18 months",
+    "rate_is_good_for": "16 months",
     "rate_end": "*Last meter read*",
-    "comments": "18 monthly bill cycles fixed at 14.97 cents/kWh. See full terms in terms of service."
+    "comments": "16 monthly bill cycles fixed at 15.17 cents/kWh. See full terms in terms of service."
   },
   {
     "supplier_name": "Town Square Energy",
@@ -422,8 +422,8 @@
   {
     "supplier_name": "Town Square Energy",
     "plan_name": "Power Your Tomorrow Fixed - 4",
-    "price_per_kwh": 0.1297,
-    "last_updated": "2026-07-27T00:00:00.000Z",
+    "price_per_kwh": 0.1087,
+    "last_updated": "2026-07-29T00:00:00.000Z",
     "pricing_type": "Fixed",
     "is_monthly_charge": false,
     "is_intro_price": false,
@@ -432,7 +432,7 @@
     "link": "http://www.townsquareenergy.com",
     "rate_is_good_for": "4 months",
     "rate_end": "*Last meter read*",
-    "comments": "4 monthly bill cycles fixed at 12.97 cents/kWh. See full terms in terms of service."
+    "comments": "4 monthly bill cycles fixed at 10.87 cents/kWh. See full terms in terms of service."
   },
   {
     "supplier_name": "XOOM Energy New Hampshire, LLC",
