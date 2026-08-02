@@ -62,17 +62,17 @@
   {
     "supplier_name": "CleanChoice Energy",
     "plan_name": "Simply Clean 12",
-    "price_per_kwh": 0.143,
-    "last_updated": "2026-07-10T00:00:00.000Z",
+    "price_per_kwh": 0.139,
+    "last_updated": "2026-08-01T00:00:00.000Z",
     "pricing_type": "Fixed",
     "is_monthly_charge": false,
     "is_intro_price": false,
     "has_cancellation_fee": false,
     "percent_renewable": 100,
-    "link": "http://mycleanchoice.com/nhshopperbl2",
+    "link": "http://mycleanchoice.com/nhshopperbl1",
     "rate_is_good_for": "12 months",
     "rate_end": "*Last meter read*",
-    "comments": "This web-exclusive pricing is available for new customers only for a limited time at https://mycleanchoice.com/nhshopperbl2. Get 100% renewable energy with CleanChoice Energy. Sign up today!"
+    "comments": "This web-exclusive pricing is available for new customers only for a limited time at https://mycleanchoice.com/nhshopperbl1. Get 100% renewable energy with CleanChoice Energy. Sign up today!"
   },
   {
     "supplier_name": "ENH Power",
