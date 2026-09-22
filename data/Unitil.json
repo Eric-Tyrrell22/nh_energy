@@ -62,8 +62,8 @@
   {
     "supplier_name": "CleanChoice Energy",
     "plan_name": "Simply Clean 12",
-    "price_per_kwh": 0.144,
-    "last_updated": "2026-09-03T00:00:00.000Z",
+    "price_per_kwh": 0.148,
+    "last_updated": "2026-09-17T00:00:00.000Z",
     "pricing_type": "Fixed",
     "is_monthly_charge": false,
     "is_intro_price": false,
@@ -78,7 +78,7 @@
     "supplier_name": "ENH Power",
     "plan_name": "Easy Choice 3 - Residential",
     "price_per_kwh": 0.1089,
-    "last_updated": "2026-09-01T00:00:00.000Z",
+    "last_updated": "2026-09-09T00:00:00.000Z",
     "pricing_type": "Fixed",
     "is_monthly_charge": false,
     "is_intro_price": false,
@@ -92,8 +92,8 @@
   {
     "supplier_name": "ENH Power",
     "plan_name": "Simple Power 12 - Residential",
-    "price_per_kwh": 0.1519,
-    "last_updated": "2026-09-01T00:00:00.000Z",
+    "price_per_kwh": 0.1559,
+    "last_updated": "2026-09-15T00:00:00.000Z",
     "pricing_type": "Fixed",
     "is_monthly_charge": false,
     "is_intro_price": false,
@@ -107,15 +107,15 @@
   {
     "supplier_name": "SmartEnergy",
     "plan_name": "SmartEnergy -  Web Only Rate",
-    "price_per_kwh": 0.188,
-    "last_updated": "2026-09-01T00:00:00.000Z",
+    "price_per_kwh": 0.155,
+    "last_updated": "2026-09-15T00:00:00.000Z",
     "pricing_type": "Fixed",
     "is_monthly_charge": false,
     "is_intro_price": false,
     "has_cancellation_fee": false,
     "percent_renewable": 100,
     "link": "http://smartenergy.com",
-    "rate_is_good_for": "6 months",
+    "rate_is_good_for": "12 months",
     "rate_end": "*Last meter read*",
     "comments": "Enjoy our fixed rate for 12 months!"
   },
@@ -133,21 +133,6 @@
     "rate_is_good_for": "6 months",
     "rate_end": "*Last meter read*",
     "comments": ""
-  },
-  {
-    "supplier_name": "Think Energy",
-    "plan_name": "Think Clean 24",
-    "price_per_kwh": 0.17,
-    "last_updated": "2026-09-02T00:00:00.000Z",
-    "pricing_type": "Fixed",
-    "is_monthly_charge": false,
-    "is_intro_price": false,
-    "has_cancellation_fee": false,
-    "percent_renewable": 100,
-    "link": "http://www.thinkenergy.com/?utm_source=rateboard&utm_medium=referral&utm_campaign=newhampshire",
-    "rate_is_good_for": "24 months",
-    "rate_end": "*Last meter read*",
-    "comments": "Think Clean 24 Sign up and receive a 100 gift card. New customers only. Eligibility rules apply. See www.thinkenergy.com/gift-card-promotion for more information."
   },
   {
     "supplier_name": "Think Energy",
@@ -181,24 +166,24 @@
   },
   {
     "supplier_name": "Town Square Energy",
-    "plan_name": "Power Your Tomorrow Fixed - 16",
-    "price_per_kwh": 0.1497,
-    "last_updated": "2026-08-27T00:00:00.000Z",
+    "plan_name": "Power Your Tomorrow Fixed - 14",
+    "price_per_kwh": 0.1427,
+    "last_updated": "2026-09-18T00:00:00.000Z",
     "pricing_type": "Fixed",
     "is_monthly_charge": false,
     "is_intro_price": false,
     "has_cancellation_fee": false,
     "percent_renewable": 0,
     "link": "http://www.townsquareenergy.com",
-    "rate_is_good_for": "16 months",
+    "rate_is_good_for": "14 months",
     "rate_end": "*Last meter read*",
-    "comments": "16 monthly bill cycles fixed at 14.97 cents/kWh. See full terms in terms of service"
+    "comments": "14 monthly bill cycles fixed at 14.27 cents/kWh. See full terms in terms of service"
   },
   {
     "supplier_name": "Town Square Energy",
     "plan_name": "Power Your Tomorrow Fixed - 3",
-    "price_per_kwh": 0.1097,
-    "last_updated": "2026-08-27T00:00:00.000Z",
+    "price_per_kwh": 0.1297,
+    "last_updated": "2026-09-18T00:00:00.000Z",
     "pricing_type": "Fixed",
     "is_monthly_charge": false,
     "is_intro_price": false,
@@ -207,7 +192,7 @@
     "link": "http://www.townsquareenergy.com",
     "rate_is_good_for": "3 months",
     "rate_end": "*Last meter read*",
-    "comments": "3 monthly bill cycles fixed at 10.97 cents/kWh. See full terms in terms of service"
+    "comments": "3 monthly bill cycles fixed at 12.97 cents/kWh. See full terms in terms of service"
   },
   {
     "supplier_name": "Town Square Energy",
