@@ -63,7 +63,7 @@
     "supplier_name": "CleanChoice Energy",
     "plan_name": "Simply Clean 12",
     "price_per_kwh": 0.141,
-    "last_updated": "2026-10-15T00:00:00.000Z",
+    "last_updated": "2026-10-22T00:00:00.000Z",
     "pricing_type": "Fixed",
     "is_monthly_charge": false,
     "is_intro_price": false,
@@ -178,21 +178,6 @@
     "rate_is_good_for": "24 months",
     "rate_end": "*Last meter read*",
     "comments": "24 monthly bill cycles fixed at 14.27 cents/kWh. See full terms in terms of service"
-  },
-  {
-    "supplier_name": "Town Square Energy",
-    "plan_name": "Power Your Tomorrow Fixed - 3",
-    "price_per_kwh": 0.1297,
-    "last_updated": "2026-09-28T00:00:00.000Z",
-    "pricing_type": "Fixed",
-    "is_monthly_charge": false,
-    "is_intro_price": false,
-    "has_cancellation_fee": false,
-    "percent_renewable": 0,
-    "link": "http://www.townsquareenergy.com",
-    "rate_is_good_for": "3 months",
-    "rate_end": "*Last meter read*",
-    "comments": "3 monthly bill cycles fixed at 12.97 cents/kWh. See full terms in terms of service"
   },
   {
     "supplier_name": "Town Square Energy",
