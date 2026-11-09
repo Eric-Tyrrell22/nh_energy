@@ -62,8 +62,8 @@
   {
     "supplier_name": "CleanChoice Energy",
     "plan_name": "Simply Clean 12",
-    "price_per_kwh": 0.137,
-    "last_updated": "2026-10-29T00:00:00.000Z",
+    "price_per_kwh": 0.139,
+    "last_updated": "2026-11-05T00:00:00.000Z",
     "pricing_type": "Fixed",
     "is_monthly_charge": false,
     "is_intro_price": false,
@@ -138,7 +138,7 @@
     "supplier_name": "Town Square Energy",
     "plan_name": "Power Your Today Variable - 1 Green",
     "price_per_kwh": 0.1531,
-    "last_updated": "2026-11-02T00:00:00.000Z",
+    "last_updated": "2026-11-06T00:00:00.000Z",
     "pricing_type": "Variable",
     "is_monthly_charge": false,
     "is_intro_price": false,
@@ -152,8 +152,8 @@
   {
     "supplier_name": "Town Square Energy",
     "plan_name": "Power Your Tomorrow Fixed - 12",
-    "price_per_kwh": 0.1397,
-    "last_updated": "2026-10-27T00:00:00.000Z",
+    "price_per_kwh": 0.1367,
+    "last_updated": "2026-11-05T00:00:00.000Z",
     "pricing_type": "Fixed",
     "is_monthly_charge": false,
     "is_intro_price": false,
@@ -162,7 +162,7 @@
     "link": "http://www.townsquareenergy.com",
     "rate_is_good_for": "12 months",
     "rate_end": "*Last meter read*",
-    "comments": "12 monthly bill cycles fixed at 13.97 cents/kWh. See full terms in terms of service"
+    "comments": "12 monthly bill cycles fixed at 13.67 cents/kWh. See full terms in terms of service"
   },
   {
     "supplier_name": "Town Square Energy",
@@ -182,8 +182,8 @@
   {
     "supplier_name": "Town Square Energy",
     "plan_name": "Power Your Today Fixed - 6",
-    "price_per_kwh": 0.204,
-    "last_updated": "2026-11-02T00:00:00.000Z",
+    "price_per_kwh": 0.1857,
+    "last_updated": "2026-11-06T00:00:00.000Z",
     "pricing_type": "Fixed",
     "is_monthly_charge": false,
     "is_intro_price": false,
@@ -192,13 +192,13 @@
     "link": "http://www.townsquareenergy.com",
     "rate_is_good_for": "6 months",
     "rate_end": "*Last meter read*",
-    "comments": "6 monthly bill cycles fixed at 20.40 cents/kWh. See full terms in terms of service."
+    "comments": "6 monthly bill cycles fixed at 18.57 cents/kWh. See full terms in terms of service."
   },
   {
     "supplier_name": "Town Square Energy",
     "plan_name": "Power Your Today Fixed - 6 Green",
-    "price_per_kwh": 0.2314,
-    "last_updated": "2026-11-02T00:00:00.000Z",
+    "price_per_kwh": 0.2131,
+    "last_updated": "2026-11-06T00:00:00.000Z",
     "pricing_type": "Fixed",
     "is_monthly_charge": false,
     "is_intro_price": false,
@@ -207,13 +207,13 @@
     "link": "http://www.townsquareenergy.com",
     "rate_is_good_for": "6 months",
     "rate_end": "*Last meter read*",
-    "comments": "6 monthly bill cycles fixed at 23.14 cents/kWh. See full terms in terms of service."
+    "comments": "6 monthly bill cycles fixed at 21.31 cents/kWh. See full terms in terms of service."
   },
   {
     "supplier_name": "Town Square Energy",
     "plan_name": "Power Your Today Variable - 1",
     "price_per_kwh": 0.1431,
-    "last_updated": "2026-11-02T00:00:00.000Z",
+    "last_updated": "2026-11-06T00:00:00.000Z",
     "pricing_type": "Variable",
     "is_monthly_charge": false,
     "is_intro_price": false,
