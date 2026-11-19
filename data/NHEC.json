@@ -78,7 +78,7 @@
     "supplier_name": "ENH Power",
     "plan_name": "Simple Power 12 - Residential",
     "price_per_kwh": 0.1499,
-    "last_updated": "2026-11-10T00:00:00.000Z",
+    "last_updated": "2026-11-17T00:00:00.000Z",
     "pricing_type": "Fixed",
     "is_monthly_charge": false,
     "is_intro_price": false,
